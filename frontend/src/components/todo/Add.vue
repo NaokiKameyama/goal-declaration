@@ -41,7 +41,8 @@ export default {
       this.db
         .collection("todos")
         .add({
-          name: _this.name
+          name: _this.name,
+          created: firebase.firestore.FieldValue.serverTimestamp()
         })
         .then(function() {
           // 追加に成功したら、name を空にする
