@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "core-js": "^3.6.4",
+    "firebase": "^7.14.4",
+    "http-proxy": "^1.18.0",
     "vue": "^2.6.11"
   },
   "devDependencies": {
