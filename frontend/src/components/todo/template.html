@@ -1,0 +1,21 @@
+<div>
+  <div class="center-title">
+    目標をつぶやこう
+    <i class="el-icon-edit"></i>
+  </div>
+  <div class="input-container">
+    <ul>
+      <el-input placeholder="Please input" v-model="name"></el-input>
+      <el-button type="primary" v-on:click="addTodo">つぶやく</el-button>
+    </ul>
+  </div>
+
+  <h1 class="goal-list-title">- みんなの目標一覧 -</h1>
+  <table class="goal-list-table">
+    <tr v-for="todo in this.todos" :key="todo.id" class="goal-list">
+      <td>
+        <li>{{ todo.name }}</li>
+      </td>
+    </tr>
+  </table>
+</div>
