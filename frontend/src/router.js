@@ -4,6 +4,7 @@ import GoalTweet from "@/components/GoalTweet/Index.vue"
 import Top from "@/components/Top/Index.vue"
 import Signup from "@/components/Signup/Index.vue"
 import Signin from "@/components/Signin/Index.vue"
+import Mypage from "@/components/Mypage/Index.vue"
 import firebase from 'firebase'
 
 Vue.use(VueRouter)
@@ -24,6 +25,10 @@ const routes = [
 	{
 		path: '/Signin',
 		component: Signin
+	},
+	{
+		path: '/Mypage',
+		component: Mypage
 	}
 ]
 
