@@ -5,17 +5,45 @@ export default {
   data () {
     return {
       username: '',
-      password: ''
+      password: '',
+      email: ''
     }
   },
   methods: {
     signUp: function () {
       firebase.auth().createUserWithEmailAndPassword(this.username, this.password)
-        .then(user => {
-          alert('Create account: ', user.email)
+        .then( () => {
+          firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+              // User is signed in.
+              var displayName = user.displayName;
+              var email = user.email;
+              var emailVerified = user.emailVerified;
+              var photoURL = user.photoURL;
+              var isAnonymous = user.isAnonymous;
+              var uid = user.uid;
+              var providerData = user.providerData;
+              console.log(displayName)
+              console.log(email)
+              console.log(emailVerified)
+              console.log(photoURL)
+              console.log(isAnonymous)
+              console.log(uid)
+              console.log(providerData)
+              localStorage.setItem('email', email)
+              localStorage.setItem('uid', uid)
+              // ...
+            } else {
+              // User is signed out.
+              // ...
+            }
+          });
+          // alert('Create account: ', user.email)
+          this.$router.push('/')
         })
         .catch(error => {
-          alert(error.message)
+          console.log(error)
+          alert("すでに登録されているメールアドレスです。")
         })
     }
   }

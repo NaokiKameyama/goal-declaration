@@ -1,3 +1,31 @@
-<div>
-  <div class="center-title">Header</div>
-</div>
+<el-menu 
+  class="el-menu-demo"
+  :default-active="activeIndex" 
+  mode="horizontal" 
+>
+  <el-menu-item index="Home" class="link-container">
+    <i class="el-icon-s-home" />
+    <router-link to="/" class="menu-item-link">
+      Top
+    </router-link>
+  </el-menu-item>
+
+  <el-menu-item index="Signin" class="link-container">
+    <router-link to="/Signin" class="menu-item-link">
+      SignIn
+    </router-link>
+  </el-menu-item>
+
+  <el-menu-item index="Signout" class="link-container">
+    <router-link to="/Signup" class="menu-item-link">
+      SignUp
+    </router-link>
+  </el-menu-item>
+
+  <el-menu-item index="Signout" class="link-container" @click="signOut">
+      SignOut
+  </el-menu-item>
+  <el-menu-item index="Signout" class="link-container">
+    {{ email }}
+</el-menu-item>
+</el-menu>
