@@ -9,3 +9,14 @@ export default new Vuex.Store({
 		count: 2
 	}
 })
+
+// import Firebase from 'Firebase'
+// import 'Firebase/firestore'
+// Vue.use(Vuex)
+//   const state = {
+//   db: Firebase.firestore()
+// }
+// export default new Vuex.Store({
+//   state,
+//   modules: {}
+// })
