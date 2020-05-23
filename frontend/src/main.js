@@ -5,6 +5,7 @@ import ElementUI from 'element-ui'
 import locale from 'element-ui/lib/locale/lang/ja'
 import 'element-ui/lib/theme-chalk/index.css'
 import 'element-ui/lib/theme-chalk/display.css'
+import router from './router.js'
 
 Vue.config.productionTip = false
 
@@ -29,5 +30,6 @@ firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
 new Vue({
+  router,
   render: h => h(App),
 }).$mount('#app')
