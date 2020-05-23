@@ -64,6 +64,14 @@ export default {
         message: "何も入力されていません。",
         duration: 2000
       });
+    },
+    remove(id) {
+      console.log(id)
+      this.db.collection("todos").doc(id).delete().then(function() {
+        console.log("Document successfully deleted!");
+    }).catch(function(error) {
+        console.error("Error removing document: ", error);
+    });
     }
   },
   filters:{
