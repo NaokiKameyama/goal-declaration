@@ -14,7 +14,7 @@
   <table class="goal-list-table">
     <tr v-for="todo in this.todos" :key="todo.id" class="goal-list">
       <td>
-        <li>{{ todo.name }}</li>
+        <li>{{ unixTime2Date(todo.created.seconds) }} : {{ todo.name }}</li>
       </td>
     </tr>
   </table>
