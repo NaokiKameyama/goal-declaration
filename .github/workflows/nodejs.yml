@@ -25,6 +25,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: pwd
+    - run: cd frontend; npm install -g firebase-tools
     - run: cd frontend; npm install
     - run: cd frontend; npm run build
     - run: cd frontend; firebase deploy --token "$FIREBASE_TOKEN"
