@@ -12,8 +12,8 @@ export default {
       todos: [],
     };
   },
-  computed: {
-    count() {
+  computed:{
+    count(){
       return this.$store.state.count;
     }
   },

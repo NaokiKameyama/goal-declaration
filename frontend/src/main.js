@@ -6,7 +6,7 @@ import locale from 'element-ui/lib/locale/lang/ja'
 import 'element-ui/lib/theme-chalk/index.css'
 import 'element-ui/lib/theme-chalk/display.css'
 import router from './router.js'
-import store from '@/components/Store/store.js'
+import store from './components/Store/store'
 
 Vue.config.productionTip = false
 
