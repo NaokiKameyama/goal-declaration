@@ -1,5 +1,7 @@
 import firebase from "firebase";
 import "firebase/firestore";
+import moment from "moment"
+import _ from 'lodash'
 
 export default {
   name: "todoAdd",
@@ -7,7 +9,7 @@ export default {
     return {
       db: null,
       name: "",
-      todos: []
+      todos: [],
     };
   },
   created: function () {
@@ -18,9 +20,10 @@ export default {
       querySnapshot.forEach(function (doc) {
         var data = doc.data();
         data.id = doc.id;
-        console.log(data)
         _this.todos.push(data);
       });
+      // リストをcoud firestoerのcreatedをkeyにして昇順にソート
+      _this.todos = _.sortBy(_this.todos, 'created');
     });
   },
   methods: {
@@ -61,9 +64,11 @@ export default {
         message: "何も入力されていません。",
         duration: 2000
       });
-    },
-    unixTime2Date(seconds) {
-      return new Date(seconds * 1000).toLocaleDateString()
+    }
+  },
+  filters:{
+    unixTime2Date: function(date){
+      return moment(date).format('YYYY/MM/DD HH:mm:ss')
     }
   }
 };
