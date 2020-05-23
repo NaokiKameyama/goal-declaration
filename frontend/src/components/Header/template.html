@@ -1,3 +1,26 @@
-<div>
-  <div class="center-title">Header</div>
-</div>
+<el-menu 
+  class="el-menu-demo"
+
+  mode="horizontal"
+  router
+>
+  <el-menu-item index="Home" class="link-container" :route="{ path:'/' }">
+    <i class="el-icon-s-home" />
+      Top
+  </el-menu-item>
+
+  <el-menu-item index="Signin" class="link-container" :route="{ path:'/Signin' }">
+    <i class="el-icon-check" />
+      Signin
+  </el-menu-item>
+
+  <el-menu-item index="Signup" class="link-container" :route="{ path:'/Signup' }">
+    <i class="el-icon-plus" />
+    Signup
+  </el-menu-item>
+  
+  <el-menu-item index="email" class="link-container" :route="{ path:'/Mypage' }">
+    <i class="el-icon-user" />
+    Mypage
+  </el-menu-item>
+</el-menu>
