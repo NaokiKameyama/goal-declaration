@@ -6,6 +6,7 @@ import locale from 'element-ui/lib/locale/lang/ja'
 import 'element-ui/lib/theme-chalk/index.css'
 import 'element-ui/lib/theme-chalk/display.css'
 import router from './router.js'
+import store from '@/components/Store/store.js'
 
 Vue.config.productionTip = false
 
@@ -30,5 +31,6 @@ firebase.analytics();
 
 new Vue({
   router,
+  store,
   render: h => h(App),
 }).$mount('#app')

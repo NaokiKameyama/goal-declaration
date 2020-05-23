@@ -12,6 +12,11 @@ export default {
       todos: [],
     };
   },
+  computed: {
+    count() {
+      return this.$store.state.count;
+    }
+  },
   created: function () {
     this.db = firebase.firestore();
     var _this = this;
