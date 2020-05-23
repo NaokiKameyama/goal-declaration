@@ -11,7 +11,6 @@ Vue.config.productionTip = false
 
 Vue.use(ElementUI, { locale })
 
-
 import firebase from 'firebase'
 // Your web app's Firebase configuration
 var firebaseConfig = {
