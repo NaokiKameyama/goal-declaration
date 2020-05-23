@@ -25,4 +25,5 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: pwd
+    - run: cd frontend; npm install
     - run: cd frontend; npm run build
