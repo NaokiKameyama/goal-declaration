@@ -1,4 +1,3 @@
-import firebase from 'firebase'
 
 export default {
   data: function () {
@@ -6,17 +5,7 @@ export default {
       email: ''
     };
   },
-  created: function () {
+  mounted() {
     this.email = localStorage.getItem('email')
-  },
-  methods: {
-    goBack() {
-      console.log('go back');
-    },
-    signOut: function () {
-      firebase.auth().signOut().then(() => {
-        this.$router.push('/signin')
-      })
-    }
   }
 };

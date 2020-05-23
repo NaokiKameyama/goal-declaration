@@ -1,31 +1,26 @@
 <el-menu 
   class="el-menu-demo"
-  :default-active="activeIndex" 
-  mode="horizontal" 
+
+  mode="horizontal"
+  router
 >
-  <el-menu-item index="Home" class="link-container">
+  <el-menu-item index="Home" class="link-container" :route="{ path:'/' }">
     <i class="el-icon-s-home" />
-    <router-link to="/" class="menu-item-link">
       Top
-    </router-link>
   </el-menu-item>
 
-  <el-menu-item index="Signin" class="link-container">
-    <router-link to="/Signin" class="menu-item-link">
-      SignIn
-    </router-link>
+  <el-menu-item index="Signin" class="link-container" :route="{ path:'/Signin' }">
+    <i class="el-icon-check" />
+      Signin
   </el-menu-item>
 
-  <el-menu-item index="Signout" class="link-container">
-    <router-link to="/Signup" class="menu-item-link">
-      SignUp
-    </router-link>
+  <el-menu-item index="Signup" class="link-container" :route="{ path:'/Signup' }">
+    <i class="el-icon-plus" />
+    Signup
   </el-menu-item>
-
-  <el-menu-item index="Signout" class="link-container" @click="signOut">
-      SignOut
+  
+  <el-menu-item index="email" class="link-container" :route="{ path:'/Mypage' }">
+    <i class="el-icon-user" />
+    Mypage
   </el-menu-item>
-  <el-menu-item index="Signout" class="link-container">
-    {{ email }}
-</el-menu-item>
 </el-menu>
