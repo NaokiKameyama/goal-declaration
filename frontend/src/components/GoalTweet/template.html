@@ -15,7 +15,10 @@
     <tr v-for="todo in this.todos" :key="todo.id" class="goal-list">
       <td>
         <!-- <li>{{ unixTime2Date(todo.created.seconds) }} : {{ todo.name }}</li> -->
-        <li v-if="todo.created">{{ todo.created.toDate() | unixTime2Date }} : {{ todo.name }}</li>
+        <li v-if="todo.created">
+          {{ todo.created.toDate() | unixTime2Date }} : {{ todo.name }}
+          <button @click="remove(todo.id)">削除</button>
+        </li>
       </td>
     </tr>
   </table>
