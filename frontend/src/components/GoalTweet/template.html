@@ -12,14 +12,15 @@
 
   <h1 class="goal-list-title">- みんなの目標一覧 -</h1>
   <table class="goal-list-table">
+    <tr>
+      <th>日付</th>
+      <th>目標</th>
+      <th></th>
+    </tr>
     <tr v-for="todo in this.todos" :key="todo.id" class="goal-list">
-      <td>
-        <!-- <li>{{ unixTime2Date(todo.created.seconds) }} : {{ todo.name }}</li> -->
-        <li v-if="todo.created">
-          {{ todo.created.toDate() | unixTime2Date }} : {{ todo.name }}
-          <button @click="remove(todo.id)">削除</button>
-        </li>
-      </td>
+      <td v-if="todo.created">{{ todo.created.toDate() | unixTime2Date }}</td>
+      <td>{{ todo.name }}</td>
+      <td><el-button type="primary" icon="el-icon-delete" @click="remove(todo.id)"></el-button></td>
     </tr>
   </table>
 </div>
