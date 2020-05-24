@@ -37,11 +37,6 @@ export default {
               // ...
             }
           });
-          // IDトークン（JWT）取得
-          const token = await firebase.auth().currentUser.getIdToken(true)
-          // ローカルストレージに保存
-          localStorage.setItem('token', token)
-
           this.$router.push('/')
         },
         err => {
