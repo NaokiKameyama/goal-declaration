@@ -9,7 +9,7 @@ export default {
     }
   },
   methods: {
-    signIn: function () {
+    async signIn() {
       firebase.auth().signInWithEmailAndPassword(this.username, this.password).then(
         () => {
           firebase.auth().onAuthStateChanged(function(user) {

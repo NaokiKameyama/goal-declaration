@@ -5,6 +5,9 @@ import Footer from "@/components/Footer/Index.vue";
 
 export default {
   name: "app",
+  created() {
+    this.$store.dispatch('init');
+  },
   components: {
     Top,
     Header,

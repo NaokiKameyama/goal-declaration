@@ -1,54 +1,27 @@
-import firebase from "firebase";
 import "firebase/firestore";
 import moment from "moment"
-import _ from 'lodash'
 
 export default {
   name: "todoAdd",
   data: function () {
     return {
-      db: null,
-      name: "",
-      todos: [],
+      name: ""
     };
   },
-  created: function () {
-    this.db = firebase.firestore();
-    var _this = this;
-    this.db.collection("todos").onSnapshot(function (querySnapshot) {
-      _this.todos = [];
-      querySnapshot.forEach(function (doc) {
-        var data = doc.data();
-        data.id = doc.id;
-        _this.todos.push(data);
-      });
-      // リストをcoud firestoerのcreatedをkeyにして昇順にソート
-      _this.todos = _.sortBy(_this.todos, 'created');
-    });
+  computed: {
+    todos() {
+      return this.$store.state.todos
+    }
   },
   methods: {
     addTodo: function () {
-      var _this = this;
-      if (!_this.name) {
+      // var _this = this;
+      if (!this.name) {
         this.inputError();
         return;
       }
       this.inputSuccess();
-      console.log(_this.name);
-      // todos コレクションにドキュメントを追加
-      this.db
-        .collection("todos")
-        .add({
-          name: _this.name,
-          created: firebase.firestore.FieldValue.serverTimestamp()
-        })
-        .then(function () {
-          // 追加に成功したら、name を空にする
-          _this.name = "";
-        })
-        .catch(function () {
-          // エラー時の処理
-        });
+      this.$store.dispatch('addTodo', this.name);
     },
     inputSuccess() {
       this.$notify({
@@ -66,12 +39,7 @@ export default {
       });
     },
     remove(id) {
-      console.log(id)
-      this.db.collection("todos").doc(id).delete().then(function() {
-        console.log("Document successfully deleted!");
-    }).catch(function(error) {
-        console.error("Error removing document: ", error);
-    });
+    this.$store.dispatch('remove', id);
     }
   },
   filters:{
