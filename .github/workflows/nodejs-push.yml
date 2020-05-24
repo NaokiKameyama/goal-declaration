@@ -22,16 +22,15 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: |
-        pwd
+    
+    - name: build
+      run: |
         cd frontend
-
-        npm install
+        npm ci
         npm run build
-    - run: |
-        pwd
+    - name: deploy
+      run: |
         cd frontend
-        pwd
         npm install -g firebase-tools
         firebase deploy --token "$FIREBASE_TOKEN"
       
