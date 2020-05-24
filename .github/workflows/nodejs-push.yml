@@ -25,13 +25,14 @@ jobs:
     - run: |
         pwd
         cd frontend
-        npm install -g firebase-tools
+
         npm install
         npm run build
     - run: |
         pwd
         cd frontend
         pwd
+        npm install -g firebase-tools
         firebase deploy --token "$FIREBASE_TOKEN"
       
     env:
