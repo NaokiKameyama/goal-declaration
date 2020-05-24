@@ -2,6 +2,7 @@ import firebase from "firebase";
 import "firebase/firestore";
 import moment from "moment"
 import _ from 'lodash'
+import { mapGetters } from "vuex";
 
 export default {
   name: "todoAdd",
@@ -12,11 +13,20 @@ export default {
       todos: [],
     };
   },
-  computed:{
+  computed: {
     count(){
       return this.$store.state.count;
-    }
+      },
+    todoget :function(){
+      console.log('todoget ->' + this.$store.state.data)
+      return this.$store.state.count;
+    },
+    // doublecount(){
+    //   return this.$store.getters.doublecount;
+    // }
+    ...mapGetters(["doublecount"])
   },
+
   created: function () {
     this.db = firebase.firestore();
     var _this = this;
