@@ -8,6 +8,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   data:{
+    // vuex内でdbを使い回すために定義
     db: null
   },
   state: {
@@ -19,13 +20,16 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    // firestoreの初期化
     init (context) {
       this.db = firebase.firestore();
+      // DBに接続 (コネクションは張りっぱなし？)
       this.db.collection("todos").onSnapshot(function (querySnapshot) {
         var todos = [];
         querySnapshot.forEach(function (doc) {
           var data = doc.data();
           data.id = doc.id;
+          // firestoreの内のデータをtodosに格納
           todos.push(data);
         });
         // リストをcoud firestoerのcreatedをkeyにして昇順にソート
@@ -33,6 +37,7 @@ export default new Vuex.Store({
         context.commit('todos', todos)
       });
     },
+    // firestoreにデータを追加
     addTodo(context, name){
       console.log(name)
       this.db
@@ -49,6 +54,7 @@ export default new Vuex.Store({
           // エラー時の処理
         });
     },
+    //firestoreからデータを削除
     remove(context, id){
       console.log(id)
       this.db.collection("todos").doc(id).delete().then(function() {
