@@ -10,31 +10,31 @@ import firebase from 'firebase'
 Vue.use(VueRouter)
 
 const routes = [
-	{ 
-		path: '/',
-		component: Top 
-	},
-	{ 
-		path: '/GoalTweet',
-		component: GoalTweet
-	},
-	{
-		path: '/Signup',
-		component: Signup
-	},
-	{
-		path: '/Signin',
-		component: Signin
-	},
-	{
-		path: '/Mypage',
-		component: Mypage
-	}
+  {
+    path: '/',
+    component: Top
+  },
+  {
+    path: '/GoalTweet',
+    component: GoalTweet
+  },
+  {
+    path: '/Signup',
+    component: Signup
+  },
+  {
+    path: '/Signin',
+    component: Signin
+  },
+  {
+    path: '/Mypage',
+    component: Mypage
+  }
 ]
 
 const router = new VueRouter({
-	mode: 'history',
-	routes: routes
+  mode: 'history',
+  routes: routes
 })
 
 

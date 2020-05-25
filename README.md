@@ -13,6 +13,7 @@
 ## Getting Started
 ```sh
 cd frontend
+npm install
 npm run serve
 open http://localhost:8080
 ```

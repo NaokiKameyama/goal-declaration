@@ -3,7 +3,7 @@ import moment from "moment"
 
 export default {
   name: "todoAdd",
-  data: function () {
+  data: function() {
     return {
       name: ""
     };
@@ -14,8 +14,7 @@ export default {
     }
   },
   methods: {
-    addTodo: function () {
-      // var _this = this;
+    addTodo() {
       if (!this.name) {
         this.inputError();
         return;
