@@ -21,6 +21,7 @@ export default {
       }
       this.inputSuccess();
       this.$store.dispatch('addTodo', this.name);
+      this.name = ""
     },
     inputSuccess() {
       this.$notify({
