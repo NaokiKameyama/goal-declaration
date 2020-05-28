@@ -5,7 +5,7 @@ import Footer from "@/components/Footer/Index.vue";
 export default {
   name: "app",
   created() {
-    // ページアクセス時にFirebaseからデーアを取得
+    // ページアクセス時にFirebaseからデータを取得
     this.$store.dispatch('init');
   },
   components: {
