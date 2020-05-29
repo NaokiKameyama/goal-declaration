@@ -20,7 +20,8 @@ export default {
         return;
       }
       this.inputSuccess();
-      this.$store.dispatch('addTodo', this.name);
+      console.log(this.$store.state.userInfo)
+      this.$store.dispatch('addTodo', { name: this.name, userInfo: this.$store.state.userInfo} );
       this.name = ""
     },
     inputSuccess() {
