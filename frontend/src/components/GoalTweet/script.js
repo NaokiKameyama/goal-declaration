@@ -35,6 +35,7 @@ export default {
         deadline: this.deadline
       } );
       this.name = ""
+      this.deadline = ""
     },
     inputSuccess() {
       this.$notify({

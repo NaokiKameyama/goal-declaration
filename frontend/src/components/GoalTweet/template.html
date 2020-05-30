@@ -14,18 +14,18 @@
   <h1 class="goal-list-title">- みんなの目標一覧 -</h1>
   <table class="goal-list-table">
     <tr>
-      <th>宣言日</th>
-      <th>期限日</th>
-      <th>目標</th>
-      <th>残り</th>
+      <th class="createDate">宣言日</th>
+      <th class="limitedDate">期限日</th>
+      <th class="goal">目標</th>
+      <th class="remaining-time">残り時間</th>
       <th></th>
     </tr>
     <tr v-for="todo in this.todos" :key="todo.id" class="goal-list">
-      <td v-if="todo.created">{{ todo.created.toDate() | unixTime2Date }}</td>
-      <td v-if="todo.deadline && todo.created">{{ todo.deadline.toDate() | unixTime2Date }}</td>
-      <td v-if="!todo.deadline && todo.created">なし</td>
-      <td v-if="todo.created">{{ todo.name }}</td>
-      <td v-if="todo.deadline  && todo.created">
+      <td class="createDate-list" v-if="todo.created">{{ todo.created.toDate() | unixTime2Date }}</td>
+      <td class="limitedDate-list" v-if="todo.deadline && todo.created">{{ todo.deadline.toDate() | unixTime2Date }}</td>
+      <td class="limitedDate-list" v-if="!todo.deadline && todo.created">なし</td>
+      <td class="goal-list" v-if="todo.created">{{ todo.name }}</td>
+      <td class="remaining-time-list" v-if="todo.deadline  && todo.created">
         <countdown :deadline="deadlineCalc(todo.deadline.toDate())"></countdown>
       </td>
       <td v-if="!todo.deadline && todo.created">
