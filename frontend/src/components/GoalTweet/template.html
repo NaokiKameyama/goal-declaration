@@ -14,17 +14,29 @@
   <h1 class="goal-list-title">- みんなの目標一覧 -</h1>
   <table class="goal-list-table">
     <tr>
-      <th>日付</th>
+      <th>宣言日</th>
+      <th>期限日</th>
       <th>目標</th>
+      <th>残り</th>
       <th></th>
     </tr>
     <tr v-for="todo in this.todos" :key="todo.id" class="goal-list">
       <td v-if="todo.created">{{ todo.created.toDate() | unixTime2Date }}</td>
+      <td v-if="todo.deadline && todo.created">{{ todo.deadline.toDate() | unixTime2Date }}</td>
+      <td v-if="!todo.deadline && todo.created">なし</td>
       <td v-if="todo.created">{{ todo.name }}</td>
-      <td v-if="todo.created"><el-button type="primary" icon="el-icon-delete" @click="remove(todo.id)"></el-button></td>
+      <td v-if="todo.deadline  && todo.created">
+        <countdown :deadline="deadlineCalc(todo.deadline.toDate())"></countdown>
+      </td>
+      <td v-if="!todo.deadline && todo.created">
+        なし
+      </td>
+      <td v-if="todo.created && todo.created">
+        <i class="el-icon-circle-close" @click="remove(todo.id)"></i>
+      </td>
     </tr>
   </table>
-  
+
   <div class="center-title">
     <router-link to="/">
       <el-button type="primary">Top</el-button>
