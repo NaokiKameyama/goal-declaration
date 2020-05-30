@@ -5,7 +5,8 @@ export default {
   name: "todoAdd",
   data: function() {
     return {
-      name: ""
+      name: "",
+     deadline: ''
     };
   },
   computed: {
@@ -21,7 +22,11 @@ export default {
       }
       this.inputSuccess();
       console.log(this.$store.state.userInfo)
-      this.$store.dispatch('addTodo', { name: this.name, userInfo: this.$store.state.userInfo} );
+      this.$store.dispatch('addTodo', { 
+        name: this.name,
+        userInfo: this.$store.state.userInfo,
+        deadline: this.deadline
+      } );
       this.name = ""
     },
     inputSuccess() {

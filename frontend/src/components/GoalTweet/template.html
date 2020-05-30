@@ -5,11 +5,12 @@
   </div>
   <div class="input-container">
     <ul>
-      <el-input placeholder="Please input" v-model="name"></el-input>
+      <el-input placeholder="目標を入力" v-model="name"></el-input>
+      <el-date-picker v-model="deadline" type="datetime" class="time" placeholder="期日を選択してください"></el-date-picker>
       <el-button class="tweet-button" type="primary" v-on:click="addTodo">つぶやく</el-button>
     </ul>
   </div>
-
+  
   <h1 class="goal-list-title">- みんなの目標一覧 -</h1>
   <table class="goal-list-table">
     <tr>
@@ -23,10 +24,13 @@
       <td v-if="todo.created"><el-button type="primary" icon="el-icon-delete" @click="remove(todo.id)"></el-button></td>
     </tr>
   </table>
-
+  
   <div class="center-title">
     <router-link to="/">
       <el-button type="primary">Top</el-button>
     </router-link>
   </div>
-</div>
+ </div>
+  
+ 
+ 

@@ -21,13 +21,14 @@ export default {
     });
   },
   // firestoreにデータを追加
-  addTodo(context, { name, userInfo}) {
+  addTodo(context, { name, userInfo, deadline}) {
     this.db
       .collection("todos")
       .add({
         name: name,
         created: firebase.firestore.FieldValue.serverTimestamp(),
-        uid: userInfo
+        uid: userInfo,
+        deadline: deadline
       })
       .then(function () {
         // 追加に成功したら、name を空にする
