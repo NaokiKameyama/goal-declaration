@@ -5,7 +5,8 @@
   color: #606266;
   font-weight: bold;
 }
- .input-container {
+
+.input-container {
   width: 50%;
   margin-left: auto;
   margin-right: auto;
@@ -19,59 +20,68 @@
   display: block;
   margin: 0 0 0 auto;
 }
- .goal-list-title {
+
+.goal-list-title {
   margin: 50px auto 50px auto;
   font-size: 30px;
   color: #606266;
   text-align: center;
 }
- .goal-list-table {
+
+.goal-list-table {
   margin: 50px auto 50px auto;
 }
- .goal-list {
+
+.goal-list {
   text-align: left;
   font-size: 20px;
 }
+
 .remove {
   width: 10px;
   height: 8px;
   font-size: 5px;
   text-align: center;
 }
- table{
+
+table {
   border-collapse: collapse;
   border-spacing: 0;
   width: 80%;
 }
-table tr{
+
+table tr {
   border-bottom: solid 1px #eee;
   cursor: pointer;
 }
-table tr:hover{
+
+table tr:hover {
   background-color: #f4fcff;
 }
-table th,table td{
+
+table th,
+table td {
   text-align: center;
   width: 25%;
   padding: 15px 0;
 }
-table td.icon{
+
+table td.icon {
   background-size: 35px;
   background-position: left 5px center;
   background-repeat: no-repeat;
   padding-left: 30px;
 }
 
-
-.createDate{
+.createDate {
   width: 13%;
 }
 
-.limitedDate{
+.limitedDate {
   width: 13%;
 }
 
-.goal{
+.goal {
   width: 50%;
 }
 
@@ -79,64 +89,91 @@ table td.icon{
   width: 24%;
 }
 
-.createDate-list{
+.createDate-list {
   width: 13%;
   font-size: 17px;
   padding: 1%;
 }
 
-.limitedDate-list{
+.limitedDate-list {
   width: 13%;
   font-size: 17px;
   padding: 1%;
 }
 
-.goal-list{
+.goal-list {
   width: 50%;
   text-align: center;
   padding: 1%;
 }
 
-.remaining-time-list{
+.remaining-time-list {
   width: 24%;
   font-size: 10px;
   padding: 1%;
 }
 
-
-.center{
+.center {
   display: flex;
   justify-content: center;
 }
 
-.card-container{
+.card-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   width: 80%;
-  margin:auto;
+  margin: auto;
   align-items: baseline;
 }
 
-.mx-auto{
+.mx-auto {
   margin: 10px;
 }
 
-.text-goal{
-  margin-top:5%;
-  margin-bottom:5%;
+.text-goal {
+  margin-top: 5%;
+  margin-bottom: 5%;
   font-size: 20px;
   font-weight: bold;
 }
 
-.unlimit{
+.unlimit {
   font-size: 25px;
   font-weight: bold;
   margin-top: 10%;
 }
 
-.el-icon-circle-close{
+.el-icon-circle-close {
   position: absolute;
   top: 3px;
   right: 3px;
+}
+
+@media screen and (max-width: 481px) {
+  .center-title {
+    margin: 50px auto 50px auto;
+    font-size: 25px;
+    text-align: center;
+    color: #606266;
+    font-weight: bold;
+  }
+  .input-container {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .time {
+    width: 100%;
+  }
+  .tweet-button {
+    display: block;
+    margin: 0 0 0 auto;
+  }
+  .vuejs-countdown .digit {
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 0;
+  }
 }

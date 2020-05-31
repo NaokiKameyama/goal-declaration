@@ -28,9 +28,12 @@
             {{ todo.name }}
           </div>
           <div v-if="todo.deadline  && todo.created">
-            <countdown :deadline="deadlineCalc(todo.deadline.toDate())"></countdown>
+            <countdown :time="diffTimeDeadlineToNow(todo.deadline.toDate())">
+              <template slot-scope="props">残り：{{ props.days }}日 {{ props.hours }}時間
+                {{ props.minutes }}分</template>
+            </countdown>
           </div>
-          <div v-if="!todo.deadline && todo.created" class="unlimit">
+          <div v-if="!todo.deadline && todo.created">
             unlimited 👿
           </div>
           <i class="el-icon-circle-close" @click="remove(todo.id)"></i>
@@ -38,6 +41,7 @@
       </v-card>
     </div>
   </div>
+
   <div class="center-title">
     <router-link to="/">
       <el-button type="primary">Top</el-button>
