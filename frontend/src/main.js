@@ -7,6 +7,10 @@ import 'element-ui/lib/theme-chalk/index.css'
 import 'element-ui/lib/theme-chalk/display.css'
 import router from './router'
 import store from './store'
+import Vuetify from 'vuetify'
+import "vuetify/dist/vuetify.min.css";
+
+Vue.use(Vuetify)
 
 Vue.config.productionTip = false
 
@@ -30,6 +34,7 @@ firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
 new Vue({
+  Vuetify,
   store,
   router,
   render: h => h(App),

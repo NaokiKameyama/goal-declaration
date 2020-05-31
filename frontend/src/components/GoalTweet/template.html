@@ -10,39 +10,51 @@
       <el-button class="tweet-button" type="primary" v-on:click="addTodo">つぶやく</el-button>
     </ul>
   </div>
-  
-  <h1 class="goal-list-title">- みんなの目標一覧 -</h1>
-  <table class="goal-list-table">
-    <tr>
-      <th class="createDate">宣言日</th>
-      <th class="limitedDate">期限日</th>
-      <th class="goal">目標</th>
-      <th class="remaining-time">残り時間</th>
-      <th></th>
-    </tr>
-    <tr v-for="todo in this.todos" :key="todo.id" class="goal-list">
-      <td class="createDate-list" v-if="todo.created">{{ todo.created.toDate() | unixTime2Date }}</td>
-      <td class="limitedDate-list" v-if="todo.deadline && todo.created">{{ todo.deadline.toDate() | unixTime2Date }}</td>
-      <td class="limitedDate-list" v-if="!todo.deadline && todo.created">なし</td>
-      <td class="goal-list" v-if="todo.created">{{ todo.name }}</td>
-      <td class="remaining-time-list" v-if="todo.deadline  && todo.created">
-        <countdown :deadline="deadlineCalc(todo.deadline.toDate())"></countdown>
-      </td>
-      <td v-if="!todo.deadline && todo.created">
-        なし
-      </td>
-      <td v-if="todo.created && todo.created">
-        <i class="el-icon-circle-close" @click="remove(todo.id)"></i>
-      </td>
-    </tr>
-  </table>
-
+  <h1 class="goal-list-title"></h1>
+  <div class="center-title">
+    <el-button type="primary" v-on:click="sort">期限の近い順に並べる</el-button>
+  </div>
+  <div class="center">
+    <!-- <div class="card-container"> -->
+    <draggable :options="options" class="card-container">
+      <v-card class="mx-auto" max-width="350" min-width="150" hover v-for="todo in this.todos" :key="todo.id">
+        <v-card-text>
+          <div v-if="todo.created" class="created-time">
+            Created：{{ todo.created.toDate() | unixTime2Date }}
+          </div>
+          <div v-if="todo.deadline && todo.created" class="created-time">
+            Deadline：{{ todo.deadline.toDate() | unixTime2Date }}
+          </div>
+          <div v-if="!todo.deadline && todo.created" class="created-time">
+            Deadline： なし
+          </div>
+          <div class="text-goal">
+            {{ todo.name }}
+          </div>
+          <div v-if="todo.deadline  && todo.created">
+            <countdown :time="diffTimeDeadlineToNow(todo.deadline.toDate())">
+              <template slot-scope="props">
+                <div class="remain">
+                  残り: {{ props.days }}日 {{ props.hours }}時間 {{ props.minutes }}分 {{ props.seconds }}秒
+                </div>
+              </template>
+            </countdown>
+          </div>
+          <div v-if="!todo.deadline && todo.created">
+            残り: unlimited 👿
+          </div>
+          <i class="el-icon-circle-close" @click="remove(todo.id)"></i>
+          <div class="achivement">
+            <v-btn text small color="primary" @click="remove(todo.id)">達成</v-btn>
+          </div>
+        </v-card-text>
+      </v-card>
+    </draggable>
+    <!-- </div> -->
+  </div>
   <div class="center-title">
     <router-link to="/">
       <el-button type="primary">Top</el-button>
     </router-link>
   </div>
- </div>
-  
- 
- 
+</div>
