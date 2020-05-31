@@ -150,6 +150,10 @@ table td.icon {
   right: 3px;
 }
 
+.created-time {
+  font-size: 12px;
+}
+
 @media screen and (max-width: 481px) {
   .center-title {
     margin: 50px auto 50px auto;
@@ -175,5 +179,8 @@ table td.icon {
     font-weight: 600;
     line-height: 1.4;
     margin-bottom: 0;
+  }
+  .created-time {
+    font-size: 10px;
   }
 }

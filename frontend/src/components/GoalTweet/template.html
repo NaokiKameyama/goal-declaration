@@ -15,13 +15,13 @@
     <div class="card-container">
       <v-card class="mx-auto" max-width="500" min-width="200" v-for="todo in this.todos" :key="todo.id">
         <v-card-text>
-          <div v-if="todo.created">
+          <div v-if="todo.created" class="created-time">
             Created：{{ todo.created.toDate() | unixTime2Date }}
           </div>
-          <div v-if="todo.deadline && todo.created">
+          <div v-if="todo.deadline && todo.created" class="created-time">
             Deadline：{{ todo.deadline.toDate() | unixTime2Date }}
           </div>
-          <div v-if="!todo.deadline && todo.created">
+          <div v-if="!todo.deadline && todo.created" class="created-time">
             Deadline： なし
           </div>
           <div class="text-goal">
@@ -29,8 +29,9 @@
           </div>
           <div v-if="todo.deadline  && todo.created">
             <countdown :time="diffTimeDeadlineToNow(todo.deadline.toDate())">
-              <template slot-scope="props">残り：{{ props.days }}日 {{ props.hours }}時間
-                {{ props.minutes }}分</template>
+              <template slot-scope="props">
+                残り: {{ props.days }}日 {{ props.hours }}時間 {{ props.minutes }}分 {{ props.seconds }}秒
+              </template>
             </countdown>
           </div>
           <div v-if="!todo.deadline && todo.created">
