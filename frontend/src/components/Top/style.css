@@ -1,17 +1,51 @@
-.center-title {
-  margin: 50px auto 50px auto;
-  font-size: 50px;
-  text-align: center;
-  color: #606266;
-  font-weight: bold;
-  text-align: center;
+.container{
+  height: 100%;
+  width: 100%;
 }
 
-.input-container {
-  width: 50%;
-  margin-left: auto;
-  margin-right: auto;
+.example-button {
+  margin: 200px auto auto auto;
+  width: 600px;
+  height: 100px;
+  font-size: 63px;
+  text-align: center;
+  padding: 0.3em 1em;
+  background: #03a9f4;
+  border-radius: 12px;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .11);
+  color: #fff;
+  padding: 16px 24px;
+  position: relative;
+  transition: .3s cubic-bezier(.4, 0, .2, 1);
 }
-.text{
-  font-size: 60px;
+
+.example-button:hover {
+  background: transparent;
+}
+
+.example-button:after {
+  background: linear-gradient(45deg, #039be5, #00d2ee);
+  border-radius: 12px;
+  bottom: 0;
+  content: '';
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.test {
+  text-decoration: none;
+  color: white
+}
+
+.message{
+  text-align: center;
+  font-family: Meiryo, "Hiragino Kaku Gothic Pro W3", Courier New, sans-serif;
+  line-height: 1.5;
+  margin-top: 45px;
+  margin-bottom: 25px;
+  color: rgb(122, 121, 121);
+  font-size: 20px;
 }

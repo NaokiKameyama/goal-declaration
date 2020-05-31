@@ -1,42 +1,14 @@
 import Vue from 'vue'
 import VueRouter from "vue-router"
-import GoalTweet from "@/components/GoalTweet/Index.vue"
-import Top from "@/components/Top/Index.vue"
-import Signup from "@/components/Signup/Index.vue"
-import Signin from "@/components/Signin/Index.vue"
-import Mypage from "@/components/Mypage/Index.vue"
 import firebase from 'firebase'
+import routes from './routes'
 
 Vue.use(VueRouter)
 
-const routes = [
-  {
-    path: '/',
-    component: Top
-  },
-  {
-    path: '/GoalTweet',
-    component: GoalTweet
-  },
-  {
-    path: '/Signup',
-    component: Signup
-  },
-  {
-    path: '/Signin',
-    component: Signin
-  },
-  {
-    path: '/Mypage',
-    component: Mypage
-  }
-]
-
 const router = new VueRouter({
   mode: 'history',
-  routes: routes
+  routes,
 })
-
 
 router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
@@ -57,4 +29,6 @@ router.beforeEach((to, from, next) => {
     next() // next() を常に呼び出すようにしてください!
   }
 })
+
+// main.jsにエクスポート
 export default router

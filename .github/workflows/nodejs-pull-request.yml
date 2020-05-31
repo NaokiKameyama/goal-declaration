@@ -23,8 +23,12 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: build check
-      run:  |  
+    - name: lint
+      run:  |
         cd frontend
         npm ci
+        npm run lint
+    - name: build
+      run:  |  
+        cd frontend
         npm run build
