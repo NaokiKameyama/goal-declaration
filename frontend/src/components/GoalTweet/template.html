@@ -10,42 +10,10 @@
       <el-button class="tweet-button" type="primary" v-on:click="addTodo">つぶやく</el-button>
     </ul>
   </div>
-
   <h1 class="goal-list-title"></h1>
-  <!-- <table class="goal-list-table">
-    <tr>
-      <th class="createDate">宣言日</th>
-      <th class="limitedDate">期限日</th>
-      <th class="goal">目標</th>
-      <th class="remaining-time">残り時間</th>
-      <th></th>
-    </tr>
-    <tr v-for="todo in this.todos" :key="todo.id" class="goal-list">
-      <td class="createDate-list" v-if="todo.created">{{ todo.created.toDate() | unixTime2Date }}</td>
-      <td class="limitedDate-list" v-if="todo.deadline && todo.created">{{ todo.deadline.toDate() | unixTime2Date }}</td>
-      <td class="limitedDate-list" v-if="!todo.deadline && todo.created">なし</td>
-      <td class="goal-list" v-if="todo.created">{{ todo.name }}</td>
-      <td class="remaining-time-list" v-if="todo.deadline  && todo.created">
-        <countdown :deadline="deadlineCalc(todo.deadline.toDate())"></countdown>
-      </td>
-      <td v-if="!todo.deadline && todo.created">
-        なし
-      </td>
-      <td v-if="todo.created && todo.created">
-        <i class="el-icon-circle-close" @click="remove(todo.id)"></i>
-      </td>
-    </tr>
-  </table> -->
-
   <div class="center">
     <div class="card-container">
-      <v-card 
-      class="mx-auto"
-      max-width="500"
-      min-width="200"
-      v-for="todo in this.todos"
-      :key="todo.id"
-      >
+      <v-card class="mx-auto" max-width="500" min-width="200" v-for="todo in this.todos" :key="todo.id">
         <v-card-text>
           <div v-if="todo.created">
             Created：{{ todo.created.toDate() | unixTime2Date }}
@@ -65,28 +33,11 @@
           <div v-if="!todo.deadline && todo.created" class="unlimit">
             unlimited 👿
           </div>
-
-          <!-- <v-card-actions>
-        <v-btn text color="deep-purple accent-4" @click="remove(todo.id)"> -->
           <i class="el-icon-circle-close" @click="remove(todo.id)"></i>
-          <!-- </v-btn>
-      </v-card-actions> -->
         </v-card-text>
       </v-card>
     </div>
-
   </div>
-
-
-
-
-
-
-
-
-
-
-
   <div class="center-title">
     <router-link to="/">
       <el-button type="primary">Top</el-button>
