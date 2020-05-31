@@ -26,6 +26,10 @@ export default {
   methods: {
     addTodo() {
       console.log(this.deadline)
+      if (!this.name && !this.deadline) {
+        this.inputError("目標と期日");
+        return;
+      }
       if (!this.name) {
         this.inputError("目標");
         return;
