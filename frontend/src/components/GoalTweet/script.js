@@ -1,11 +1,15 @@
 import "firebase/firestore";
 import moment from "moment"
 import VueCountdown from '@chenfengyuan/vue-countdown';
+import draggable from 'vuedraggable'
 
 export default {
   name: "todoAdd",
   data: function() {
     return {
+      options: {
+        animation: 300
+      },
       name: "",
       deadline: ''
     };
@@ -65,6 +69,7 @@ export default {
     }
   },
   components: {
-    countdown: VueCountdown
+    countdown: VueCountdown,
+    draggable
   }
 };
