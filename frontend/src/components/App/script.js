@@ -6,7 +6,7 @@ export default {
   name: "app",
   created() {
     // ページアクセス時にFirebaseからデータを取得
-    this.$store.dispatch('init');
+    this.$store.dispatch('init', 'created');
   },
   components: {
     Header,

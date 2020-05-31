@@ -27,11 +27,14 @@ export default {
     addTodo() {
       console.log(this.deadline)
       if (!this.name) {
-        this.inputError();
+        this.inputError("目標");
+        return;
+      }
+      if (!this.deadline) {
+        this.inputError("期日");
         return;
       }
       this.inputSuccess();
-      console.log(this.$store.state.userInfo)
       this.$store.dispatch('addTodo', {
         name: this.name,
         userInfo: this.$store.state.userInfo,
@@ -48,10 +51,10 @@ export default {
         duration: 1000
       });
     },
-    inputError() {
+    inputError(text) {
       this.$notify.error({
         title: "Error",
-        message: "目標を入力されていません。",
+        message: text+"が入力されていません。",
         duration: 2000
       });
     },
@@ -61,6 +64,18 @@ export default {
     diffTimeDeadlineToNow(date) {
       console.log(date)
       return date - new Date();
+    },
+    sort(){
+      // todos = _.sortBy(todos, 'created');
+      this.$store.dispatch('init', 'deadline');
+      // this.$store.state.todos.forEach( function(todo){
+      //   if(!todo.deadline){
+      //     console.log(todo.deadline)
+      //     todo.deadline = new Date(2017,9);
+      //   }
+      // })
+      // console.log(this.todos)
+      // this.$store.state.todos = _.sortBy(this.$store.state.todos, 'deadline');
     }
   },
   filters: {

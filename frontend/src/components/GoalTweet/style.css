@@ -1,5 +1,5 @@
 .center-title {
-  margin: 50px auto 50px auto;
+  margin: 50px auto 10px auto;
   font-size: 50px;
   text-align: center;
   color: #606266;
@@ -154,9 +154,19 @@ table td.icon {
   font-size: 12px;
 }
 
+.remain{
+  margin-bottom:4%;
+}
+
+.achivement{
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+}
+
 @media screen and (max-width: 481px) {
   .center-title {
-    margin: 50px auto 50px auto;
+    margin: 50px auto 10px auto;
     font-size: 25px;
     text-align: center;
     color: #606266;
@@ -174,6 +184,18 @@ table td.icon {
     display: block;
     margin: 0 0 0 auto;
   }
+
+  .card-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: auto;
+    align-items: baseline;
+  }
+  .mx-auto {
+    margin: 2px;
+  }
   .vuejs-countdown .digit {
     font-size: 32px;
     font-weight: 600;
@@ -182,5 +204,9 @@ table td.icon {
   }
   .created-time {
     font-size: 10px;
+  }
+
+  .remain {
+    font-size: 12px;
   }
 }
