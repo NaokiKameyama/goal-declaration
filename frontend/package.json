@@ -23,6 +23,7 @@
     "vuejs-datepicker": "^1.6.2",
     "vuetify": "^2.2.30",
     "vuex": "^3.4.0",
+    "vuex-persistedstate": "^3.0.1",
     "vuexfire": "^3.2.2"
   },
   "devDependencies": {

@@ -34,7 +34,8 @@ export default {
     }
   },
   mounted(){
-    console.log(this.todosFlag)
+    console.log("Gola-uid ->" + this.uid)
+    
   },
   watch: {
     todos: function (val) {
