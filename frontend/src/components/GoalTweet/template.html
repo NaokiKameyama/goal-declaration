@@ -37,6 +37,7 @@
             </div>
             <div v-if="todo.deadline  && todo.created">
               <countdown :time="diffTimeDeadlineToNow(todo.deadline.toDate())">
+              <!-- <countdown :time="120000"> -->
                 <template slot-scope="props">
                   <div class="remain">
                     残り: {{ props.days }}日 {{ props.hours }}時間 {{ props.minutes }}分 {{ props.seconds }}秒
