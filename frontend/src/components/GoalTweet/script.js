@@ -13,16 +13,26 @@ export default {
       name: "",
       deadline: '',
       color: '',
+      my: false,
+      todoList: []
     }
   },
   computed: {
     todos() {
       return this.$store.state.todos
+    },
+    myTodos () {
+      return this.$store.getters.getMyTodos
     }
   },
   mounted() {
-    var now = new Date();
-    console.log(now)
+    console.log(this.todos)
+    this.todoList = this.todos
+  },
+  watch: {
+    todos: function (val) {
+      this.todoList = val
+    }
   },
   methods: {
     addTodo() {
@@ -73,6 +83,14 @@ export default {
     },
     sort(){
       this.$store.dispatch('init', 'deadline');
+    },
+    showMyTodos(){
+      console.log(this.myTodos)
+      console.log(this.todos)
+      this.todoList = this.myTodos
+    },
+    showTodos(){
+      this.todoList = this.todos
     }
   },
   filters: {

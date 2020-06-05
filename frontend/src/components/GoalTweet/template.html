@@ -15,12 +15,14 @@
   </div>
   <h1 class="goal-list-title"></h1>
   <div class="center-title">
+    <el-button type="primary" v-on:click="showTodos">みんなのTodoを表示する</el-button>
+    <el-button type="primary" v-on:click="showMyTodos">自分のTodoのみ表示する</el-button>
     <el-button type="primary" v-on:click="sort">期限の近い順に並べる</el-button>
   </div>
   <div class="center">
     <!-- <div class="card-container"> -->
     <draggable :options="options" class="card-container">
-      <div v-for="todo in this.todos" :key="todo.id">
+      <div v-for="todo in this.todoList" :key="todo.id">
         <v-card class="mx-auto" max-width="350" min-width="150" :color="todo.color" hover>
           <v-card-text>
             <div v-if="todo.created" class="created-time">
@@ -37,7 +39,7 @@
             </div>
             <div v-if="todo.deadline  && todo.created">
               <countdown :time="diffTimeDeadlineToNow(todo.deadline.toDate())">
-              <!-- <countdown :time="120000"> -->
+                <!-- <countdown :time="120000"> -->
                 <template slot-scope="props">
                   <div class="remain">
                     残り: {{ props.days }}日 {{ props.hours }}時間 {{ props.minutes }}分 {{ props.seconds }}秒
@@ -56,7 +58,6 @@
         </v-card>
       </div>
     </draggable>
-    <!-- </div> -->
   </div>
   <div class="center-title">
     <router-link to="/">
