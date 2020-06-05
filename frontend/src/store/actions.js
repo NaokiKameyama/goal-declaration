@@ -102,5 +102,8 @@ export default {
         console.log("singUp error -> " + error)
         alert("すでに登録されているメールアドレスです。")
       })
+  },
+  switchTodos(context, todosFlag){
+    context.commit('todosFlag', todosFlag)
   }
 }

@@ -15,8 +15,8 @@ export default {
       deadline: '',
       color: '',
       my: false,
-      todoList: [],
-      myTodoFlag: false
+      myTodoFlag: false,
+      sortDeadlineFlag: false
     }
   },
   computed: {
@@ -25,11 +25,13 @@ export default {
     },
     myTodos () {
       return this.$store.getters.getMyTodos
+    },
+    todosFlag(){
+      return this.$store.getters.getTodosFlag
     }
   },
-  mounted() {
-    console.log(this.todos)
-    this.todoList = this.todos
+  mounted(){
+    console.log(this.todosFlag)
   },
   watch: {
     todos: function (val) {
@@ -84,30 +86,28 @@ export default {
       return Number(date - new Date())
     },
     sortDeadline(){
+      this.sortDeadlineFlag = true
       if(this.myTodoFlag){
         console.log(this.myTodoFlag)
-        this.todoList = _.sortBy(this.myTodos, 'deadline');
+        this.myTodos = _.sortBy(this.myTodos, 'deadline');
       }else{
         this.$store.dispatch('init', 'deadline');
       }
     },
     sortCreated(){
+      this.sortDeadlineFlag = false
       if(this.myTodoFlag){
         console.log(this.myTodoFlag)
-        this.todoList = _.sortBy(this.myTodos, 'created');
+        this.myTodos = _.sortBy(this.myTodos, 'created');
       }else{
         this.$store.dispatch('init', 'created');
       }
     },
     showMyTodos(){
-      this.myTodoFlag = true
-      console.log(this.myTodos)
-      console.log(this.todos)
-      this.todoList = this.myTodos
+      this.$store.dispatch('switchTodos', false);
     },
     showTodos(){
-      this.myTodoFlag = false
-      this.todoList = this.todos
+      this.$store.dispatch('switchTodos', true)
     }
   },
   filters: {
