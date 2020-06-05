@@ -4,5 +4,8 @@ export default {
   },
   getTodosFlag: state => {
     return state.todosFlag
+  },
+  getUid: state => {
+     return state.userId
   }
 }

@@ -103,6 +103,11 @@ export default {
         alert("すでに登録されているメールアドレスです。")
       })
   },
+  signOut(context){
+    firebase.auth().signOut().then(() => {
+    })
+    context.commit('signOut')
+  },
   switchTodos(context, todosFlag){
     context.commit('todosFlag', todosFlag)
   }

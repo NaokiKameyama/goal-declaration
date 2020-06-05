@@ -8,5 +8,8 @@ export default {
   },
   todosFlag(state, todosFlag){
     state.todosFlag = todosFlag
+  },
+  signOut(state){
+    state.userId = ""
   }
 }
