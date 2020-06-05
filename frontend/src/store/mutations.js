@@ -5,5 +5,8 @@ export default {
   userId(state, userId) {
     console.log("mm: "+userId)
     state.userId = userId
+  },
+  todosFlag(state, todosFlag){
+    state.todosFlag = todosFlag
   }
 }
