@@ -56,7 +56,7 @@ export default {
         firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
             // this.uid = user.uid;
-            console.log(user.uid)
+            console.log("signIn uid ->" + user.uid)
             // console.log("aaaaaaa: "+ this.uid)
             context.commit('userId', user.uid)
             // ...
@@ -76,5 +76,31 @@ export default {
         alert(err.message)
       }
     )
+  },
+  signUp(context, {username, password}){
+    firebase.auth().createUserWithEmailAndPassword(username, password).then(
+      () => {
+        firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+            console.log("signUp uid -> " + user.uid)
+            context.commit('userId', user.uid)
+          } else {
+            // User is signed out.
+            // ...
+          }
+        });
+
+        firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
+          console.log(idToken)
+        }).catch(function(error) {
+          console.log(error)
+        });
+        // alert('Create account: ', user.email)
+        // this.$router.push('/')
+      })
+      .catch(error => {
+        console.log("singUp error -> " + error)
+        alert("すでに登録されているメールアドレスです。")
+      })
   }
 }
