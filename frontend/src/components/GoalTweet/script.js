@@ -42,7 +42,7 @@ export default {
       this.inputSuccess();
       this.$store.dispatch('addTodo', {
         name: this.name,
-        userInfo: this.$store.state.userInfo,
+        userId: this.$store.state.userId,
         deadline: this.deadline,
         color: this.color
       });

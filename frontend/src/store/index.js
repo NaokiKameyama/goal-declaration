@@ -10,7 +10,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   data:{
     // store内でdbを使い回すために定義
-    db: null
+    db: null,
+    uid: ""
   },
   state,
   mutations,

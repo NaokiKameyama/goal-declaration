@@ -1,4 +1,4 @@
 export default {
 	todos: [],
-	userInfo: null
+	userId: ""
 }

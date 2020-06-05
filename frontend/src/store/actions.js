@@ -22,13 +22,13 @@ export default {
     });
   },
   // firestoreにデータを追加
-  addTodo(context, { name, userInfo, deadline, color}) {
+  addTodo(context, { name, userId, deadline, color}) {
     this.db
       .collection("todos")
       .add({
         name: name,
         created: firebase.firestore.FieldValue.serverTimestamp(),
-        uid: userInfo,
+        uid: userId,
         deadline: deadline,
         color: color
       })
@@ -48,5 +48,33 @@ export default {
     }).catch(function (error) {
       console.error("Error removing document: ", error);
     });
+  },
+  // サインイン
+  signIn(context, {username, password}){
+    firebase.auth().signInWithEmailAndPassword(username, password).then(
+      () => {
+        firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+            // this.uid = user.uid;
+            console.log(user.uid)
+            // console.log("aaaaaaa: "+ this.uid)
+            context.commit('userId', user.uid)
+            // ...
+          } else {
+            // User is signed out.
+            // ...
+          }
+        });
+
+        firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
+          console.log(idToken)
+        }).catch(function(error) {
+          console.log(error)
+        });
+      },
+      err => {
+        alert(err.message)
+      }
+    )
   }
 }
