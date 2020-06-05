@@ -5,6 +5,9 @@ export default {
   computed: {
     todos() {
       return this.$store.state.todos
+    },
+    userId() {
+      return this.$store.state.userId
     }
   },
   methods: {
