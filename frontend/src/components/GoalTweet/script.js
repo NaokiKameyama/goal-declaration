@@ -11,8 +11,9 @@ export default {
         animation: 300
       },
       name: "",
-      deadline: ''
-    };
+      deadline: '',
+      color: '',
+    }
   },
   computed: {
     todos() {
@@ -42,7 +43,8 @@ export default {
       this.$store.dispatch('addTodo', {
         name: this.name,
         userInfo: this.$store.state.userInfo,
-        deadline: this.deadline
+        deadline: this.deadline,
+        color: this.color
       });
       this.name = ""
       this.deadline = ""
@@ -66,20 +68,11 @@ export default {
       this.$store.dispatch('remove', id);
     },
     diffTimeDeadlineToNow(date) {
-      console.log(date)
-      return date - new Date();
+      if (Number(date - new Date()) < 0) return 0
+      return Number(date - new Date())
     },
     sort(){
-      // todos = _.sortBy(todos, 'created');
       this.$store.dispatch('init', 'deadline');
-      // this.$store.state.todos.forEach( function(todo){
-      //   if(!todo.deadline){
-      //     console.log(todo.deadline)
-      //     todo.deadline = new Date(2017,9);
-      //   }
-      // })
-      // console.log(this.todos)
-      // this.$store.state.todos = _.sortBy(this.$store.state.todos, 'deadline');
     }
   },
   filters: {
