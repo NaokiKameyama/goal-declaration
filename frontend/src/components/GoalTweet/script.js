@@ -2,6 +2,7 @@ import "firebase/firestore";
 import moment from "moment"
 import VueCountdown from '@chenfengyuan/vue-countdown';
 import draggable from 'vuedraggable'
+import _ from 'lodash'
 
 export default {
   name: "todoAdd",
@@ -14,7 +15,8 @@ export default {
       deadline: '',
       color: '',
       my: false,
-      todoList: []
+      todoList: [],
+      myTodoFlag: false
     }
   },
   computed: {
@@ -81,15 +83,30 @@ export default {
       if (Number(date - new Date()) < 0) return 0
       return Number(date - new Date())
     },
-    sort(){
-      this.$store.dispatch('init', 'deadline');
+    sortDeadline(){
+      if(this.myTodoFlag){
+        console.log(this.myTodoFlag)
+        this.todoList = _.sortBy(this.myTodos, 'deadline');
+      }else{
+        this.$store.dispatch('init', 'deadline');
+      }
+    },
+    sortCreated(){
+      if(this.myTodoFlag){
+        console.log(this.myTodoFlag)
+        this.todoList = _.sortBy(this.myTodos, 'created');
+      }else{
+        this.$store.dispatch('init', 'created');
+      }
     },
     showMyTodos(){
+      this.myTodoFlag = true
       console.log(this.myTodos)
       console.log(this.todos)
       this.todoList = this.myTodos
     },
     showTodos(){
+      this.myTodoFlag = false
       this.todoList = this.todos
     }
   },
