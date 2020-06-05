@@ -11,8 +11,9 @@ export default {
         animation: 300
       },
       name: "",
-      deadline: ''
-    };
+      deadline: '',
+      color: ''
+    }
   },
   computed: {
     todos() {
@@ -42,7 +43,8 @@ export default {
       this.$store.dispatch('addTodo', {
         name: this.name,
         userInfo: this.$store.state.userInfo,
-        deadline: this.deadline
+        deadline: this.deadline,
+        color: this.color
       });
       this.name = ""
       this.deadline = ""
