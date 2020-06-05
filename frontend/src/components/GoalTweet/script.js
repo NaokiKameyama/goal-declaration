@@ -28,6 +28,9 @@ export default {
     },
     todosFlag(){
       return this.$store.getters.getTodosFlag
+    },
+    uid() {
+      return this.$store.getters.getUid
     }
   },
   mounted(){
@@ -54,9 +57,10 @@ export default {
         return;
       }
       this.inputSuccess();
+      console.log("uid -> " + this.uid)
       this.$store.dispatch('addTodo', {
         name: this.name,
-        userId: this.$store.state.userId,
+        uid: this.uid,
         deadline: this.deadline,
         color: this.color
       });

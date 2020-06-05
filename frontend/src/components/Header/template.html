@@ -19,8 +19,11 @@
     Signup
   </el-menu-item>
   
-  <el-menu-item index="email" class="link-container" :route="{ path:'/Mypage' }">
+  <el-menu-item v-if="emailHead" index="Mypage" class="link-container" :route="{ path:'/Mypage' }">
     <i class="el-icon-user" />
-    Mypage
+    {{ emailHead }}
   </el-menu-item>
+
+
+
 </el-menu>
