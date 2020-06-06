@@ -330,4 +330,8 @@ input[type=checkbox].blue:checked,input[type=checkbox].blue:indeterminate,input[
   .remain {
     font-size: 12px;
   }
+
+  .center-button {
+    margin-top: 10px;
+  }
 }
