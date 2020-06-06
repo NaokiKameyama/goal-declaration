@@ -20,7 +20,8 @@ export default {
       sortDeadlineFlag: false,
       searchTodos: [],
       searchMyTodos: [],
-      todoList: null
+      todoList: null,
+      addTodoFlag: true
     }
   },
   computed: {
@@ -87,8 +88,56 @@ export default {
         duration: 2000
       });
     },
+    upDate(){
+      if (!this.name && !this.deadline) {
+        this.updateError("目標と期日");
+        return;
+      }
+      if (!this.name) {
+        this.updateError("目標");
+        return;
+      }
+      if (!this.deadline) {
+        this.updateError("期日");
+        return;
+      }
+      this.updateSuccess();
+      this.addTodoFlag = true;
+      this.$store.dispatch('upDate',{
+        id : this.id,
+        name: this.name,
+        uid: this.uid,
+        deadline: this.deadline,
+        color: this.color
+      }),
+      this.name = ""
+      this.deadline = ""
+    },
+    updateSuccess() {
+      this.$notify({
+        title: "Success",
+        message: "更新に成功しました。",
+        type: "success",
+        duration: 1000
+      });
+    },
+    updateError(text) {
+      this.$notify.error({
+        title: "Error",
+        message: text+"が入力されていません。",
+        duration: 2000
+      });
+    },
     remove(id) {
       this.$store.dispatch('remove', id);
+    },
+    inputData(todo) {
+      this.id = todo.id
+      this.name = todo.name,
+      // this.deadline = moment(todo.deadline.toDate()).format('YYYY/MM/DD HH:mm:ss'),
+      this.deadline = todo.deadline.toDate(),
+      this.color = todo.color,
+      this.addTodoFlag = false
     },
     diffTimeDeadlineToNow(date) {
       try {

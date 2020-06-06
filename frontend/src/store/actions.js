@@ -33,8 +33,25 @@ export default {
         color: color
       })
       .then(function () {
-        // 追加に成功したら、name を空にする
-        name = "";
+      })
+      .catch(function () {
+        // エラー時の処理
+      });
+  },
+
+  upDate(context, { id, name, uid, deadline, color}) {
+    this.db
+      .collection("todos")
+      .doc(id)
+      .update(
+      {
+        name: name,
+        created: firebase.firestore.FieldValue.serverTimestamp(),
+        uid: uid,
+        deadline: deadline,
+        color: color
+      })
+      .then(function () {
       })
       .catch(function () {
         // エラー時の処理

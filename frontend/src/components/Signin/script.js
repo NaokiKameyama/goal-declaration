@@ -12,7 +12,7 @@ export default {
         username: this.username,
         password: this.password
       });
-      this.$router.push('/')
+      this.$router.push('/GoalTweet')
     }
   }
 }

@@ -173,7 +173,13 @@ table td.icon {
 .achivement{
   position: absolute;
   bottom: 1px;
-  right: 1px;
+  right : 1px;
+}
+
+.update{
+  position: absolute;
+  bottom: 1px;
+  right : 25%;
 }
 
 .search-container{

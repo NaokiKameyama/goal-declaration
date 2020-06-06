@@ -10,7 +10,10 @@
       <label><input class="white" type="radio" value="" v-model="color" checked="checked"> 普通&nbsp;</label>
       <label><input class="light-blue" type="radio" value="#B2EBF2" v-model="color"> 重要&nbsp;</label>
       <label><input class="blue" type="radio" value="#B3E5FC" v-model="color"> 最重要&nbsp;</label>
-      <v-btn class="tweet-button" dark color="#409EFF" v-on:click="addTodo">つぶやく</v-btn>
+
+      <v-btn v-if="addTodoFlag === true " class="tweet-button" dark color="#409EFF" v-on:click="addTodo" >つぶやく</v-btn>
+      <v-btn v-else class="tweet-button" dark color="#ff4500" v-on:click="upDate" >更新</v-btn>
+
     </ul>
   </div>
   <div class="middle-title">
@@ -57,6 +60,9 @@
             <i v-if="uid == todo.uid" class="el-icon-circle-close" @click="remove(todo.id)"></i>
             <div v-if="uid == todo.uid" class="achivement">
               <v-btn text small color="primary" @click="remove(todo.id)">達成</v-btn>
+            </div>
+            <div v-if="uid == todo.uid" class="update">
+              <v-btn text small color="primary" @click="inputData(todo)">更新</v-btn>
             </div>
           </v-card-text>
         </v-card>
