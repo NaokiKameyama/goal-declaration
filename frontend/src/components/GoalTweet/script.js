@@ -21,7 +21,7 @@ export default {
   },
   computed: {
     todos() {
-      return this.$store.state.todos
+      return this.$store.getters.getTodos
     },
     myTodos () {
       return this.$store.getters.getMyTodos
@@ -87,8 +87,13 @@ export default {
       this.$store.dispatch('remove', id);
     },
     diffTimeDeadlineToNow(date) {
-      if (Number(date - new Date()) < 0) return 0
-      return Number(date - new Date())
+      try {
+        var convertDate = date.toDate()
+        if (Number(convertDate - new Date()) < 0) return 0
+        return Number(convertDate - new Date())
+      } catch( e ) {
+        return 0
+      }
     },
     sortDeadline(){
       this.sortDeadlineFlag = true
@@ -117,7 +122,12 @@ export default {
   },
   filters: {
     unixTime2Date: function(date) {
-      return moment(date).format('YYYY/MM/DD HH:mm:ss')
+      try {
+        var convertDate  = date.toDate()
+        return moment(convertDate).format('YYYY/MM/DD HH:mm:ss')
+      } catch( e ) {
+        return 0
+      }
     }
   },
   components: {
