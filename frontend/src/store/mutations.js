@@ -3,7 +3,6 @@ export default {
     state.todos = todos
   },
   signInUp(state, {uid, email}) {
-    console.log("mm: "+ uid)
     state.uid = uid
     state.email = email
     // context.commit('signInUp',{uid: user.uid, email: user.email})

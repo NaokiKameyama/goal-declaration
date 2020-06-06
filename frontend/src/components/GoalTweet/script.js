@@ -14,7 +14,7 @@ export default {
       name: "",
       word: "",
       deadline: '',
-      color: '',
+      priority: '',
       my: false,
       myTodoFlag: false,
       sortDeadlineFlag: false,
@@ -39,7 +39,6 @@ export default {
     }
   },
   mounted(){
-    console.log("Gola-uid ->" + this.uid)
     this.todoList = this.todos
   },
   watch: {
@@ -49,7 +48,6 @@ export default {
   },
   methods: {
     addTodo() {
-      console.log(this.deadline)
       if (!this.name && !this.deadline) {
         this.inputError("目標と期日");
         return;
@@ -63,12 +61,11 @@ export default {
         return;
       }
       this.inputSuccess();
-      console.log("uid -> " + this.uid)
       this.$store.dispatch('addTodo', {
         name: this.name,
         uid: this.uid,
         deadline: this.deadline,
-        color: this.color
+        priority: this.priority
       });
       this.name = ""
       this.deadline = ""
@@ -108,7 +105,7 @@ export default {
         name: this.name,
         uid: this.uid,
         deadline: this.deadline,
-        color: this.color
+        priority: this.priority
       }),
       this.name = ""
       this.deadline = ""
@@ -136,7 +133,7 @@ export default {
       this.name = todo.name,
       // this.deadline = moment(todo.deadline.toDate()).format('YYYY/MM/DD HH:mm:ss'),
       this.deadline = todo.deadline.toDate(),
-      this.color = todo.color,
+      this.priority = todo.priority,
       this.addTodoFlag = false
     },
     diffTimeDeadlineToNow(date) {
@@ -150,9 +147,7 @@ export default {
     },
     sortDeadline(){
       this.sortDeadlineFlag = true
-      console.log(this.todosFlag)
       if(!this.todosFlag){
-        console.log(this.myTodoFlag)
         this.todoList = _.sortBy(this.myTodos, 'deadline');
       }else{
         this.$store.dispatch('init', 'deadline');
@@ -160,10 +155,8 @@ export default {
       }
     },
     sortCreated(){
-      console.log(this.todosFlag)
       this.sortDeadlineFlag = false
       if(!this.todosFlag){
-        console.log(this.myTodoFlag)
         this.todoList = _.sortBy(this.myTodos, 'created');
       }else{
         this.$store.dispatch('init', 'created');
@@ -172,7 +165,6 @@ export default {
     },
     showMyTodos(){
       this.$store.dispatch('switchTodos', false);
-      console.log(this.myTodos)
       this.todoList = this.myTodos
     },
     showTodos(){
@@ -195,6 +187,11 @@ export default {
       } catch( e ) {
         return 0
       }
+    },
+    priority2Color: function(priority) {
+      if(priority == "1") return ""
+      if(priority == "2") return "#B2EBF2"
+      if(priority == "3") return "#B3E5FC"
     }
   },
   components: {
