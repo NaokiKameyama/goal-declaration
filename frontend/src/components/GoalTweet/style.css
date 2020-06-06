@@ -6,10 +6,22 @@
   font-weight: bold;
 }
 
+.middle-title {
+  margin: 0px auto 10px auto;
+  font-size: 50px;
+  text-align: center;
+  color: #577fd1;
+  font-weight: bold;
+}
+
 .input-container {
   width: 50%;
   margin-left: auto;
   margin-right: auto;
+}
+
+.center-button{
+  margin: 0 10px;
 }
 
 .time {
@@ -162,6 +174,16 @@ table td.icon {
   position: absolute;
   bottom: 1px;
   right: 1px;
+}
+
+.search-container{
+  margin: 0 auto;
+  width: 50%
+}
+
+.search-button{
+  display: block;
+  margin: 0 0 0 auto;
 }
 
 input[type=checkbox],input[type=radio] {
@@ -334,4 +356,6 @@ input[type=checkbox].blue:checked,input[type=checkbox].blue:indeterminate,input[
   .center-button {
     margin-top: 10px;
   }
+
+
 }

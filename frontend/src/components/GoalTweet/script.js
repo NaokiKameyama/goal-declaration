@@ -41,11 +41,11 @@ export default {
     console.log("Gola-uid ->" + this.uid)
     this.todoList = this.todos
   },
-  // watch: {
-  //   todos: function (val) {
-  //     this.todoList = val
-  //   }
-  // },
+  watch: {
+    todos: function (val) {
+      this.todoList = val
+    }
+  },
   methods: {
     addTodo() {
       console.log(this.deadline)
