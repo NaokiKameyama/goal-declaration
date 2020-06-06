@@ -18,7 +18,12 @@
     <i class="el-icon-plus" />
     Signup
   </el-menu-item>
-  
+
+  <el-menu-item v-if="emailHead" index="GoalTweet" class="link-container" :route="{ path:'/GoalTweet' }">
+    <i class="el-icon-edit" />
+    Tweet Tasks
+  </el-menu-item>
+
   <el-menu-item v-if="emailHead" index="Mypage" class="link-container" :route="{ path:'/Mypage' }">
     <i class="el-icon-user" />
     {{ emailHead }}
