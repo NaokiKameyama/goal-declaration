@@ -33,8 +33,6 @@ export default {
         color: color
       })
       .then(function () {
-        // 追加に成功したら、name を空にする
-        name = "";
       })
       .catch(function () {
         // エラー時の処理
@@ -54,9 +52,6 @@ export default {
         color: color
       })
       .then(function () {
-        console.log("actions/upDate after")
-        // 追加に成功したら、name を空にする
-        name = "";
       })
       .catch(function () {
         // エラー時の処理
