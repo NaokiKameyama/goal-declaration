@@ -93,9 +93,11 @@ export default {
     inputData(todo) {
       console.log("method/inputData -> " + todo)
       console.log(todo)
-      this.name = todo.name
-      // this.deadline = "2020-06-24 00:00:00"
+      this.name = todo.name,
+      this.deadline = moment(todo.deadline.toDate()).format('YYYY/MM/DD HH:mm:ss'),
+      console.log(todo.deadline.toDate()),
       this.color = todo.color
+      
     },
     diffTimeDeadlineToNow(date) {
       try {
