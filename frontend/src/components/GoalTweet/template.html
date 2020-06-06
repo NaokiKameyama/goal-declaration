@@ -19,12 +19,14 @@
     <el-button class="center-button" type="primary" v-on:click="showMyTodos">自分のTodoのみ表示する</el-button>
     <el-button class="center-button" type="primary" v-on:click="sortDeadline">期限の近い順に並べる</el-button>
     <el-button class="center-button" type="primary" v-on:click="sortCreated">作成日順に並べる</el-button>
+    <el-input placeholder="検索単語を入力" v-model="word"></el-input>
+    <el-button class="center-button" type="primary" v-on:click="getTodosBySearch(word)">検索する</el-button>
   </div>
   <div class="center">
     <draggable :options="options" class="card-container">
 
       <!-- みんなのTodoを表示する -->
-      <div v-if="todosFlag" v-for="todo in this.todos" :key="todo.id">
+      <div v-for="todo in this.todoList" :key="todo.id">
         <v-card class="mx-auto" max-width="350" min-width="150" :color="todo.color" hover>
           <v-card-text>
             <div v-if="todo.created" class="created-time">
@@ -61,7 +63,7 @@
       </div>
 
       <!-- 自分のTodoのみ表示する -->
-      <div v-if="!todosFlag" v-for="todo in this.myTodos" :key="todo.id">
+      <!-- <div v-if="!todosFlag" v-for="todo in this.myTodos" :key="todo.id">
         <v-card class="mx-auto" max-width="350" min-width="150" :color="todo.color" hover>
           <v-card-text>
             <div v-if="todo.created" class="created-time">
@@ -78,7 +80,6 @@
             </div>
             <div v-if="todo.deadline  && todo.created">
               <countdown :time="diffTimeDeadlineToNow(todo.deadline)">
-                <!-- <countdown :time="120000"> -->
                 <template slot-scope="props">
                   <div class="remain">
                     残り: {{ props.days }}日 {{ props.hours }}時間 {{ props.minutes }}分 {{ props.seconds }}秒
@@ -96,7 +97,7 @@
             </div>
           </v-card-text>
         </v-card>
-      </div>
+      </div> -->
 
     </draggable>
   </div>

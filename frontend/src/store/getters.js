@@ -14,5 +14,11 @@ export default {
   getEmailHead: state => {
     const emailHead = state.email.split("@")[0];
     return emailHead
+  },
+  getTodosBySearch: (state) => ({word}) => {
+    return state.todos.filter(todo => todo.name.includes(word))
+  },
+  getMyTodosBySearch: () => ({word, myTodos}) => {
+    return myTodos.filter(myTodos => myTodos.name.includes(word))
   }
 }

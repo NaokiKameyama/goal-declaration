@@ -12,11 +12,15 @@ export default {
         animation: 300
       },
       name: "",
+      word: "",
       deadline: '',
       color: '',
       my: false,
       myTodoFlag: false,
-      sortDeadlineFlag: false
+      sortDeadlineFlag: false,
+      searchTodos: [],
+      searchMyTodos: [],
+      todoList: null
     }
   },
   computed: {
@@ -35,13 +39,13 @@ export default {
   },
   mounted(){
     console.log("Gola-uid ->" + this.uid)
-    
+    this.todoList = this.todos
   },
-  watch: {
-    todos: function (val) {
-      this.todoList = val
-    }
-  },
+  // watch: {
+  //   todos: function (val) {
+  //     this.todoList = val
+  //   }
+  // },
   methods: {
     addTodo() {
       console.log(this.deadline)
@@ -97,27 +101,41 @@ export default {
     },
     sortDeadline(){
       this.sortDeadlineFlag = true
-      if(this.myTodoFlag){
+      console.log(this.todosFlag)
+      if(!this.todosFlag){
         console.log(this.myTodoFlag)
-        this.myTodos = _.sortBy(this.myTodos, 'deadline');
+        this.todoList = _.sortBy(this.myTodos, 'deadline');
       }else{
         this.$store.dispatch('init', 'deadline');
+        this.todoList = this.todos
       }
     },
     sortCreated(){
+      console.log(this.todosFlag)
       this.sortDeadlineFlag = false
-      if(this.myTodoFlag){
+      if(!this.todosFlag){
         console.log(this.myTodoFlag)
-        this.myTodos = _.sortBy(this.myTodos, 'created');
+        this.todoList = _.sortBy(this.myTodos, 'created');
       }else{
         this.$store.dispatch('init', 'created');
+        this.todoList = this.todos
       }
     },
     showMyTodos(){
       this.$store.dispatch('switchTodos', false);
+      console.log(this.myTodos)
+      this.todoList = this.myTodos
     },
     showTodos(){
       this.$store.dispatch('switchTodos', true)
+      this.todoList = this.todos
+    },
+    getTodosBySearch(word){
+      if(!this.todosFlag){
+        this.todoList = this.$store.getters.getMyTodosBySearch({word:word, myTodos: this.myTodos})
+      }else{
+        this.todoList = this.searchTodos = this.$store.getters.getTodosBySearch({word:word, todo: this.todos})
+      }
     }
   },
   filters: {
