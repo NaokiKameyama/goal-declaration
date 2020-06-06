@@ -57,11 +57,11 @@
             <div v-if="!todo.deadline && todo.created">
               残り: unlimited 👿
             </div>
-            <i v-if="uid == todo.uid" class="el-icon-circle-close" @click="remove(todo.id)"></i>
+            <i v-if="uid == todo.uid || todo.uid == ''" class="el-icon-circle-close" @click="remove(todo.id)"></i>
             <div v-if="uid == todo.uid" class="achivement">
               <v-btn text small color="primary" @click="remove(todo.id)">達成</v-btn>
             </div>
-            <div v-if="uid == todo.uid" class="update">
+            <div v-if="uid == todo.uid || todo.uid == ''" class="update">
               <v-btn text small color="primary" @click="inputData(todo)">更新</v-btn>
             </div>
           </v-card-text>
