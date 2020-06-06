@@ -32,6 +32,7 @@ export default {
     uid() {
       return this.$store.getters.getUid
     }
+
   },
   mounted(){
     console.log("Gola-uid ->" + this.uid)
@@ -118,6 +119,9 @@ export default {
     },
     showTodos(){
       this.$store.dispatch('switchTodos', true)
+    },
+    inputData(){
+      console.log("computed/inputData work")
     }
   },
   filters: {
