@@ -109,7 +109,9 @@ export default {
         uid: this.uid,
         deadline: this.deadline,
         color: this.color
-      })
+      }),
+      this.name = ""
+      this.deadline = ""
     },
     updateSuccess() {
       this.$notify({
@@ -133,8 +135,8 @@ export default {
       this.id = todo.id
       this.name = todo.name,
       // this.deadline = moment(todo.deadline.toDate()).format('YYYY/MM/DD HH:mm:ss'),
+      this.deadline = todo.deadline.toDate(),
       this.color = todo.color,
-      this.updatebtn = "更新",
       this.addTodoFlag = false
     },
     diffTimeDeadlineToNow(date) {
