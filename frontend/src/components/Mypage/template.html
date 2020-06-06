@@ -1,10 +1,29 @@
 <div>
   <div class="center-title">
-    Mypge<br>
-    {{ displayName }}
+    ようこそ<br>
+    {{ emailHead }}さん
   </div>
-  <button @click="signOut">
-    <i class="el-icon-close" />
-    Sign out
-  </button>
+  <div class="center-txt">
+    いままでのつぶやき <i class="el-icon-edit" />
+  </div>
+  <div class="timeline">
+    <el-timeline :reverse="reverse">
+      <el-timeline-item v-for="(item, index) in myTodos" :timestamp="item.created | unixTime2Date" placement="top"
+        :key="item.id">
+        <el-card style="text-align: left">
+          <div style="font-weight: bolder;">{{ item.name }}</div>
+          <span>期限：　{{ item.deadline | unixTime2Date }}</span>
+        </el-card>
+      </el-timeline-item>
+    </el-timeline>
+  </div>
+
+  <div class="center-container">
+    <router-link to="/GoalTweet" class="center-button">
+      <v-btn  dark color="#409EFF">Tweet Tasksへ</v-btn>
+    </router-link>
+  </div>
+  <div class="center-container">
+    <v-btn class="center-button" dark color="#409EFF" @click="signOut">SignOut</v-btn>
+  </div>
 </div>
