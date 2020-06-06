@@ -21,7 +21,6 @@ export default {
       searchTodos: [],
       searchMyTodos: [],
       todoList: null,
-      updatebtn: "つぶやく",
       addTodoFlag: true
     }
   },
@@ -90,8 +89,6 @@ export default {
       });
     },
     upDate(){
-      console.log("upDate work")
-      console.log(this.id)
       if (!this.name && !this.deadline) {
         this.updateError("目標と期日");
         return;
@@ -133,12 +130,9 @@ export default {
       this.$store.dispatch('remove', id);
     },
     inputData(todo) {
-      console.log("method/inputData -> " + todo)
-      console.log(todo.id)
       this.id = todo.id
       this.name = todo.name,
       // this.deadline = moment(todo.deadline.toDate()).format('YYYY/MM/DD HH:mm:ss'),
-      console.log(todo.deadline.toDate()),
       this.color = todo.color,
       this.updatebtn = "更新",
       this.addTodoFlag = false
