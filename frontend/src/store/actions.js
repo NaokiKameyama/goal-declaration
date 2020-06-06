@@ -40,6 +40,28 @@ export default {
         // エラー時の処理
       });
   },
+
+  upDate(context, { id, name, uid, deadline, color}) {
+    this.db
+      .collection("todos")
+      .doc(id)
+      .update(
+      {
+        name: name,
+        created: firebase.firestore.FieldValue.serverTimestamp(),
+        uid: uid,
+        deadline: deadline,
+        color: color
+      })
+      .then(function () {
+        console.log("actions/upDate after")
+        // 追加に成功したら、name を空にする
+        name = "";
+      })
+      .catch(function () {
+        // エラー時の処理
+      });
+  },
   //firestoreからデータを削除
   remove(context, id) {
     console.log(id)

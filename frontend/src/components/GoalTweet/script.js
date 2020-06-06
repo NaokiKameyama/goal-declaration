@@ -21,7 +21,8 @@ export default {
       searchTodos: [],
       searchMyTodos: [],
       todoList: null,
-      updatebtn: "つぶやく"
+      updatebtn: "つぶやく",
+      addTodoFlag: true
     }
   },
   computed: {
@@ -73,7 +74,6 @@ export default {
       this.name = ""
       this.deadline = ""
     },
-    
     inputSuccess() {
       this.$notify({
         title: "Success",
@@ -89,18 +89,59 @@ export default {
         duration: 2000
       });
     },
+    upDate(){
+      console.log("upDate work")
+      console.log(this.id)
+      if (!this.name && !this.deadline) {
+        this.updateError("目標と期日");
+        return;
+      }
+      if (!this.name) {
+        this.updateError("目標");
+        return;
+      }
+      if (!this.deadline) {
+        this.updateError("期日");
+        return;
+      }
+      this.updateSuccess();
+      this.addTodoFlag = true;
+      this.$store.dispatch('upDate',{
+        id : this.id,
+        name: this.name,
+        uid: this.uid,
+        deadline: this.deadline,
+        color: this.color
+      })
+    },
+    updateSuccess() {
+      this.$notify({
+        title: "Success",
+        message: "更新に成功しました。",
+        type: "success",
+        duration: 1000
+      });
+    },
+    updateError(text) {
+      this.$notify.error({
+        title: "Error",
+        message: text+"が入力されていません。",
+        duration: 2000
+      });
+    },
     remove(id) {
       this.$store.dispatch('remove', id);
     },
     inputData(todo) {
       console.log("method/inputData -> " + todo)
-      console.log(todo)
+      console.log(todo.id)
+      this.id = todo.id
       this.name = todo.name,
-      this.deadline = moment(todo.deadline.toDate()).format('YYYY/MM/DD HH:mm:ss'),
+      // this.deadline = moment(todo.deadline.toDate()).format('YYYY/MM/DD HH:mm:ss'),
       console.log(todo.deadline.toDate()),
       this.color = todo.color,
-      this.updatebtn = "更新"
-      
+      this.updatebtn = "更新",
+      this.addTodoFlag = false
     },
     diffTimeDeadlineToNow(date) {
       try {
