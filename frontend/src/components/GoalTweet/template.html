@@ -10,17 +10,19 @@
       <label><input class="white" type="radio" value="" v-model="color" checked="checked"> 普通&nbsp;</label>
       <label><input class="light-blue" type="radio" value="#B2EBF2" v-model="color"> 重要&nbsp;</label>
       <label><input class="blue" type="radio" value="#B3E5FC" v-model="color"> 最重要&nbsp;</label>
-      <el-button class="tweet-button" type="primary" v-on:click="addTodo">つぶやく</el-button>
+      <v-btn class="tweet-button" dark color="#409EFF" v-on:click="addTodo">つぶやく</v-btn>
     </ul>
   </div>
-  <h1 class="goal-list-title"></h1>
-  <div class="center-title">
-    <el-button class="center-button" type="primary" v-on:click="showTodos">みんなのTodoを表示する</el-button>
-    <el-button class="center-button" type="primary" v-on:click="showMyTodos">自分のTodoのみ表示する</el-button>
-    <el-button class="center-button" type="primary" v-on:click="sortDeadline">期限の近い順に並べる</el-button>
-    <el-button class="center-button" type="primary" v-on:click="sortCreated">作成日順に並べる</el-button>
-    <el-input placeholder="検索単語を入力" v-model="word"></el-input>
-    <el-button class="center-button" type="primary" v-on:click="getTodosBySearch(word)">検索する</el-button>
+  <div class="middle-title">
+    <v-btn class="center-button" dark color="#409EFF" v-on:click="showTodos">みんなのTodoを表示する</v-btn>
+    <v-btn class="center-button" dark color="#409EFF" v-on:click="showMyTodos">自分のTodoのみ表示する</v-btn>
+    <v-btn class="center-button" dark color="#409EFF" v-on:click="sortDeadline">期限の近い順に並べる</v-btn>
+    <v-btn class="center-button" dark color="#409EFF" v-on:click="sortCreated">作成日順に並べる</v-btn>
+
+    <div class="search-container">
+      <el-input class="search-input" placeholder="検索単語を入力" v-model="word"></el-input>
+        <v-btn class="search-button" dark color="#409EFF" v-on:click="getTodosBySearch(word)">検索する</v-btn>
+    </div>
   </div>
   <div class="center">
     <draggable :options="options" class="card-container">
