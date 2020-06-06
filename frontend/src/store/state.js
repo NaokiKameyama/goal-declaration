@@ -1,5 +1,6 @@
 export default {
 	todos: [],
-	userId: "",
-	todosFlag: true
+	uid: "",
+	todosFlag: true,
+	email: ""
 }

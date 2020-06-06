@@ -1,5 +1,3 @@
-import firebase from 'firebase'
-
 export default {
   name: 'HelloWorld',
   data: function() {
@@ -12,9 +10,8 @@ export default {
   },
   methods: {
     signOut: function () {
-      firebase.auth().signOut().then(() => {
-        this.$router.push('/signin')
-      })
+      this.$store.dispatch('signOut');
+      this.$router.push('/')
     }
   }
 }

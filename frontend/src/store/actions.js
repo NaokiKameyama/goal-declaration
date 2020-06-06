@@ -22,13 +22,13 @@ export default {
     });
   },
   // firestoreにデータを追加
-  addTodo(context, { name, userId, deadline, color}) {
+  addTodo(context, { name, uid, deadline, color}) {
     this.db
       .collection("todos")
       .add({
         name: name,
         created: firebase.firestore.FieldValue.serverTimestamp(),
-        uid: userId,
+        uid: uid,
         deadline: deadline,
         color: color
       })
@@ -56,9 +56,9 @@ export default {
         firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
             // this.uid = user.uid;
-            console.log("signIn uid ->" + user.uid)
-            // console.log("aaaaaaa: "+ this.uid)
-            context.commit('userId', user.uid)
+            // console.log("signIn uid ->" + user.uid)
+            console.log(user.email)
+            context.commit('signInUp',{uid: user.uid, email: user.email})
             // ...
           } else {
             // User is signed out.
@@ -83,7 +83,7 @@ export default {
         firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
             console.log("signUp uid -> " + user.uid)
-            context.commit('userId', user.uid)
+            context.commit('signInUp',{uid: user.uid, email: user.email})
           } else {
             // User is signed out.
             // ...
@@ -102,6 +102,11 @@ export default {
         console.log("singUp error -> " + error)
         alert("すでに登録されているメールアドレスです。")
       })
+  },
+  signOut(context){
+    firebase.auth().signOut().then(() => {
+    })
+    context.commit('signOut')
   },
   switchTodos(context, todosFlag){
     context.commit('todosFlag', todosFlag)
