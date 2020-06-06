@@ -94,7 +94,7 @@ export default {
       console.log("method/inputData -> " + todo)
       console.log(todo)
       this.name = todo.name
-      this.deadline = todo.deadline
+      // this.deadline = "2020-06-24 00:00:00"
       this.color = todo.color
     },
     diffTimeDeadlineToNow(date) {
