@@ -90,6 +90,13 @@ export default {
     remove(id) {
       this.$store.dispatch('remove', id);
     },
+    inputData(todo) {
+      console.log("method/inputData -> " + todo)
+      console.log(todo)
+      this.name = todo.name
+      this.deadline = todo.deadline
+      this.color = todo.color
+    },
     diffTimeDeadlineToNow(date) {
       try {
         var convertDate = date.toDate()
