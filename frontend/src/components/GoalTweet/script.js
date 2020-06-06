@@ -20,7 +20,8 @@ export default {
       sortDeadlineFlag: false,
       searchTodos: [],
       searchMyTodos: [],
-      todoList: null
+      todoList: null,
+      updatebtn: "つぶやく"
     }
   },
   computed: {
@@ -72,6 +73,7 @@ export default {
       this.name = ""
       this.deadline = ""
     },
+    
     inputSuccess() {
       this.$notify({
         title: "Success",
@@ -96,7 +98,8 @@ export default {
       this.name = todo.name,
       this.deadline = moment(todo.deadline.toDate()).format('YYYY/MM/DD HH:mm:ss'),
       console.log(todo.deadline.toDate()),
-      this.color = todo.color
+      this.color = todo.color,
+      this.updatebtn = "更新"
       
     },
     diffTimeDeadlineToNow(date) {
