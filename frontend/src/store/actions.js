@@ -16,7 +16,6 @@ export default {
         todos.push(data);
       });
       // リストをcoud firestoerのcreatedをkeyにして昇順にソート
-      console.log(sortKey)
       todos = _.sortBy(todos, sortKey);
       context.commit('todos', todos)
     });
@@ -59,9 +58,7 @@ export default {
   },
   //firestoreからデータを削除
   remove(context, id) {
-    console.log(id)
     this.db.collection("todos").doc(id).delete().then(function () {
-      console.log("Document successfully deleted!");
     }).catch(function (error) {
       console.error("Error removing document: ", error);
     });
@@ -72,9 +69,6 @@ export default {
       () => {
         firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
-            // this.uid = user.uid;
-            // console.log("signIn uid ->" + user.uid)
-            console.log(user.email)
             context.commit('signInUp',{uid: user.uid, email: user.email})
             // ...
           } else {
@@ -83,11 +77,11 @@ export default {
           }
         });
 
-        firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
-          console.log(idToken)
-        }).catch(function(error) {
-          console.log(error)
-        });
+        // firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
+        //   console.log(idToken)
+        // }).catch(function(error) {
+        //   console.log(error)
+        // });
       },
       err => {
         alert(err.message)
@@ -99,7 +93,6 @@ export default {
       () => {
         firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
-            console.log("signUp uid -> " + user.uid)
             context.commit('signInUp',{uid: user.uid, email: user.email})
           } else {
             // User is signed out.
@@ -107,17 +100,14 @@ export default {
           }
         });
 
-        firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
-          console.log(idToken)
-        }).catch(function(error) {
-          console.log(error)
-        });
-        // alert('Create account: ', user.email)
-        // this.$router.push('/')
+        // firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
+        //   console.log(idToken)
+        // }).catch(function(error) {
+        //   console.log(error)
+        // });
       })
       .catch(error => {
-        console.log("singUp error -> " + error)
-        alert("すでに登録されているメールアドレスです。")
+        alert(error.message)
       })
   },
   signOut(context){

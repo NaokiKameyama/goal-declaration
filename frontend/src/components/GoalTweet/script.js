@@ -39,7 +39,6 @@ export default {
     }
   },
   mounted(){
-    console.log("Gola-uid ->" + this.uid)
     this.todoList = this.todos
   },
   watch: {
@@ -49,7 +48,6 @@ export default {
   },
   methods: {
     addTodo() {
-      console.log(this.deadline)
       if (!this.name && !this.deadline) {
         this.inputError("目標と期日");
         return;
@@ -63,7 +61,6 @@ export default {
         return;
       }
       this.inputSuccess();
-      console.log("uid -> " + this.uid)
       this.$store.dispatch('addTodo', {
         name: this.name,
         uid: this.uid,
@@ -150,9 +147,7 @@ export default {
     },
     sortDeadline(){
       this.sortDeadlineFlag = true
-      console.log(this.todosFlag)
       if(!this.todosFlag){
-        console.log(this.myTodoFlag)
         this.todoList = _.sortBy(this.myTodos, 'deadline');
       }else{
         this.$store.dispatch('init', 'deadline');
@@ -160,10 +155,8 @@ export default {
       }
     },
     sortCreated(){
-      console.log(this.todosFlag)
       this.sortDeadlineFlag = false
       if(!this.todosFlag){
-        console.log(this.myTodoFlag)
         this.todoList = _.sortBy(this.myTodos, 'created');
       }else{
         this.$store.dispatch('init', 'created');
@@ -172,7 +165,6 @@ export default {
     },
     showMyTodos(){
       this.$store.dispatch('switchTodos', false);
-      console.log(this.myTodos)
       this.todoList = this.myTodos
     },
     showTodos(){
