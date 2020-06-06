@@ -22,7 +22,7 @@ export default {
     });
   },
   // firestoreにデータを追加
-  addTodo(context, { name, uid, deadline, color}) {
+  addTodo(context, { name, uid, deadline, priority}) {
     this.db
       .collection("todos")
       .add({
@@ -30,7 +30,7 @@ export default {
         created: firebase.firestore.FieldValue.serverTimestamp(),
         uid: uid,
         deadline: deadline,
-        color: color
+        priority: priority
       })
       .then(function () {
       })
@@ -39,7 +39,7 @@ export default {
       });
   },
 
-  upDate(context, { id, name, uid, deadline, color}) {
+  upDate(context, { id, name, uid, deadline, priority}) {
     this.db
       .collection("todos")
       .doc(id)
@@ -49,7 +49,7 @@ export default {
         created: firebase.firestore.FieldValue.serverTimestamp(),
         uid: uid,
         deadline: deadline,
-        color: color
+        priority: priority
       })
       .then(function () {
       })
