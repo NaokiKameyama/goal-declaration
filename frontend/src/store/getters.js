@@ -2,6 +2,9 @@ export default {
 	getMyTodos: state => {
     return state.todos.filter(x => x.uid === state.uid && !x.achiveFlag )
   },
+  getMyTodos_with_achive: state => {
+    return state.todos.filter(x => x.uid === state.uid )
+  },
   getTodos: state => {
     return state.todos.filter(x => !x.achiveFlag )
   },
@@ -15,10 +18,10 @@ export default {
     const emailHead = state.email.split("@")[0];
     return emailHead
   },
-  getTodosBySearch: (state) => ({word}) => {
-    return state.todos.filter(todo => todo.name.includes(word))
-  },
-  getMyTodosBySearch: () => ({word, myTodos}) => {
-    return myTodos.filter(myTodos => myTodos.name.includes(word))
+  // getTodosBySearch: (state) => ({word}) => {
+  //   return state.todos.filter(todo => todo.name.includes(word))
+  // },
+  getTodosBySearch: () => ({word, todos}) => {
+    return todos.filter(todos => todos.name.includes(word))
   }
 }

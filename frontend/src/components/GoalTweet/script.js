@@ -32,6 +32,9 @@ export default {
     myTodos () {
       return this.$store.getters.getMyTodos
     },
+    myTodos_with_achive () {
+      return this.$store.getters.getMyTodos_with_achive
+    },
     allTodos(){
       return {todos: this.$store.getters.getTodos, myTodos: this.$store.getters.getMyTodos}
     },
@@ -47,11 +50,7 @@ export default {
   },
   watch: {
     allTodos: function (val) {
-      if(!this.todosFlag){
-        this.todoList = val.myTodos
-      }else{
-        this.todoList = val.todos
-      }
+        this.todoList = (!this.todosFlag)? val.myTodos : val.todos
     }
   },
   methods: {
@@ -189,11 +188,7 @@ export default {
       this.todoList = this.todos
     },
     getTodosBySearch(word){
-      if(!this.todosFlag){
-        this.todoList = this.$store.getters.getMyTodosBySearch({word:word, myTodos: this.myTodos})
-      }else{
-        this.todoList = this.searchTodos = this.$store.getters.getTodosBySearch({word:word, todo: this.todos})
-      }
+      this.todoList = this.$store.getters.getTodosBySearch({word:word, todos: (!this.todosFlag)? this.myTodos : this.todos})
     },
     console(todo) { 
       console.log(todo.id)
