@@ -3,6 +3,7 @@ import Top from "@/components/Top/Index.vue"
 import Signup from "@/components/Signup/Index.vue"
 import Signin from "@/components/Signin/Index.vue"
 import Mypage from "@/components/Mypage/Index.vue"
+import Matrix from "@/components/Matrix/Index.vue"
 
 export default [
 	{
@@ -24,5 +25,9 @@ export default [
 	{
 		path: '/Mypage',
 		component: Mypage
+	},
+	{
+		path: '/matrix',
+		component: Matrix
 	}
 ]
