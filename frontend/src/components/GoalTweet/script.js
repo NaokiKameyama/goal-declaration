@@ -136,6 +136,9 @@ export default {
     remove(id) {
       this.$store.dispatch('remove', id);
     },
+    achive(id) {
+      this.$store.dispatch('achive', id)
+    },
     inputData(todo) {
       this.id = todo.id
       this.name = todo.name,

@@ -21,50 +21,53 @@ export default {
     });
   },
   // firestoreにデータを追加
-  addTodo(context, { name, uid, deadline, priority, urgent, deleteFlag, achiveFlag}) {
+  addTodo(context, act_addtodo) {
     this.db
       .collection("todos")
       .add({
-        name: name,
+        name: act_addtodo.name,
         created: firebase.firestore.FieldValue.serverTimestamp(),
-        uid: uid,
-        deadline: deadline,
-        priority: priority,
-        urgent: urgent,
-        deleteFlag: deleteFlag,
-        achiveFlag: achiveFlag
-      })
-      .then(function () {
-      })
-      .catch(function () {
-        // エラー時の処理
+        uid: act_addtodo.uid,
+        deadline: act_addtodo.deadline,
+        priority: act_addtodo.priority,
+        urgent: act_addtodo.urgent,
+        deleteFlag: act_addtodo.deleteFlag,
+        achiveFlag: act_addtodo.achiveFlag
+      }).then(function () {
+      }).catch(function (error) {
+        console.error("Error actions/addTodo : ", error);
       });
   },
 
-  upDate(context, { id, name, uid, deadline, priority}) {
+  upDate(context, act_upDate) {
     this.db
-      .collection("todos")
-      .doc(id)
-      .update(
+      .collection("todos").doc(act_upDate.id).update(
       {
-        name: name,
+        name: act_upDate.name,
         created: firebase.firestore.FieldValue.serverTimestamp(),
-        uid: uid,
-        deadline: deadline,
-        priority: priority
-      })
-      .then(function () {
-      })
-      .catch(function () {
-        // エラー時の処理
+        uid: act_upDate.uid,
+        deadline: act_upDate.deadline,
+        priority: act_upDate.priority
+      }).then(function () {
+      }).catch(function (error) {
+        console.error("Error actions/upDate : ", error);
       });
   },
   //firestoreからデータを削除
   remove(context, id) {
     this.db.collection("todos").doc(id).delete().then(function () {
     }).catch(function (error) {
-      console.error("Error removing document: ", error);
+      console.error("Error actions/remove : ", error);
     });
+  },
+  achive(context, id) {
+    this.db
+      .collection("todos").doc(id).update({
+      achiveFlag : true
+      }).then(function () {
+      }).catch(function (error) {
+        console.error("Error actions/achive : ", error);
+      });
   },
   // サインイン
   signIn(context, {username, password}){
