@@ -1,9 +1,9 @@
 export default {
 	getMyTodos: state => {
-    return state.todos.filter(x => x.uid === state.uid)
+    return state.todos.filter(x => x.uid === state.uid && !x.achiveFlag )
   },
   getTodos: state => {
-    return state.todos
+    return state.todos.filter(x => !x.achiveFlag )
   },
   getTodosFlag: state => {
     return state.todosFlag
