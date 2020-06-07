@@ -15,7 +15,9 @@ export default {
       word: "",
       deadline: '',
       priority: '',
-      my: false,
+      urgent: '',
+      deleteFlag: false,
+      achiveFlag: false,
       myTodoFlag: false,
       sortDeadlineFlag: false,
       searchTodos: [],
@@ -65,7 +67,10 @@ export default {
         name: this.name,
         uid: this.uid,
         deadline: this.deadline,
-        priority: this.priority
+        priority: this.priority,
+        urgent: this.urgent,
+        deleteFlag: this.deleteFlag,
+        achiveFlag: this.achiveFlag
       });
       this.name = ""
       this.deadline = ""
@@ -105,7 +110,10 @@ export default {
         name: this.name,
         uid: this.uid,
         deadline: this.deadline,
-        priority: this.priority
+        priority: this.priority,
+        urgent: this.urgent,
+        deleteFlag: this.deleteFlag,
+        achiveFlag: this.achiveFlag,
       }),
       this.name = ""
       this.deadline = ""
@@ -177,6 +185,9 @@ export default {
       }else{
         this.todoList = this.searchTodos = this.$store.getters.getTodosBySearch({word:word, todo: this.todos})
       }
+    },
+    console(todo) { 
+      console.log(todo.id)
     }
   },
   filters: {
