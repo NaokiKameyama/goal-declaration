@@ -13,8 +13,11 @@ export default {
       return this.$store.getters.getEmailHead
     },
     myTodos(){
-      return this.$store.getters.getMyTodos
-    }
+      return this.$store.getters.getMyTodos_with_achive
+    },
+    achived_myTodos(){
+      return this.$store.getters.getMyTodos_with_achive.filter(x => x.achiveFlag)
+      }
   },
   created() {
     this.displayName = "aaa"
