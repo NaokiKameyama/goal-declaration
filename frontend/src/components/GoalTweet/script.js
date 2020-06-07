@@ -18,7 +18,6 @@ export default {
       urgent: '1',
       deleteFlag: false,
       achiveFlag: false,
-      myTodoFlag: false,
       sortDeadlineFlag: false,
       searchTodos: [],
       searchMyTodos: [],
@@ -45,7 +44,11 @@ export default {
   },
   watch: {
     todos: function (val) {
-      this.todoList = val
+      if(!this.todosFlag){
+        this.todoList = this.myTodos
+      }else{
+        this.todoList = val
+      }
     }
   },
   methods: {
