@@ -21,7 +21,7 @@ export default {
     });
   },
   // firestoreにデータを追加
-  addTodo(context, { name, uid, deadline, priority}) {
+  addTodo(context, { name, uid, deadline, priority, urgent, deleteFlag, achiveFlag}) {
     this.db
       .collection("todos")
       .add({
@@ -29,7 +29,10 @@ export default {
         created: firebase.firestore.FieldValue.serverTimestamp(),
         uid: uid,
         deadline: deadline,
-        priority: priority
+        priority: priority,
+        urgent: urgent,
+        deleteFlag: deleteFlag,
+        achiveFlag: achiveFlag
       })
       .then(function () {
       })

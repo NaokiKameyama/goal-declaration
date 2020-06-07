@@ -313,7 +313,7 @@ input[type=checkbox].blue:checked,input[type=checkbox].blue:indeterminate,input[
   background: #B3E5FC;
 }
 
-@media screen and (max-width: 481px) {
+@media screen and (max-width: 601px) {
   .center-title {
     margin: 50px auto 10px auto;
     font-size: 25px;
@@ -358,10 +358,5 @@ input[type=checkbox].blue:checked,input[type=checkbox].blue:indeterminate,input[
   .remain {
     font-size: 12px;
   }
-
-  .center-button {
-    margin-top: 10px;
-  }
-
 
 }

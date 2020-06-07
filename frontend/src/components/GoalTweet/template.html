@@ -7,9 +7,15 @@
     <ul>
       <el-input placeholder="目標を入力" v-model="name"></el-input>
       <el-date-picker v-model="deadline" type="datetime" class="time" placeholder="期日を選択してください"></el-date-picker>
+      重要度
       <label><input class="white" type="radio" value="1" v-model="priority" checked="checked"> 普通&nbsp;</label>
       <label><input class="light-blue" type="radio" value="2" v-model="priority"> 重要&nbsp;</label>
       <label><input class="blue" type="radio" value="3" v-model="priority"> 最重要&nbsp;</label>
+      <p></p>
+      緊急度
+      <label><input class="white" type="radio" value="1" v-model="urgent" checked="checked"> 普通&nbsp;</label>
+      <label><input class="light-blue" type="radio" value="2" v-model="urgent"> 緊急&nbsp;</label>
+      <label><input class="blue" type="radio" value="3" v-model="urgent"> 超緊急&nbsp;</label>
 
       <v-btn v-if="addTodoFlag === true " class="tweet-button" dark color="#409EFF" v-on:click="addTodo" >つぶやく</v-btn>
       <v-btn v-else class="tweet-button" dark color="#ff4500" v-on:click="upDate" >更新</v-btn>
@@ -27,11 +33,11 @@
         <v-btn class="search-button" dark color="#409EFF" v-on:click="getTodosBySearch(word)">検索する</v-btn>
     </div>
   </div>
-  <div class="center">
+  <div class="center" >　
     <draggable :options="options" class="card-container">
       <div v-for="todo in this.todoList" :key="todo.id">
-        <v-card class="mx-auto" max-width="350" min-width="150" :color="todo.priority | priority2Color" hover>
-          <v-card-text>
+        <v-card class="mx-auto"  @click="console(todo)" max-width="350" min-width="150" :color="todo.priority | priority2Color" hover>
+          <v-card-text >
             <div v-if="todo.created" class="created-time">
               Created：{{ todo.created | unixTime2Date }}
             </div>
@@ -75,4 +81,6 @@
       <el-button type="primary">Top</el-button>
     </router-link>
   </div>
+  <el-radio v-model="radio" label="1"></el-radio>
+  <el-radio v-model="radio" label="2"></el-radio>
 </div>
