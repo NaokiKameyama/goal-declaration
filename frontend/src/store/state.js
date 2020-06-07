@@ -1,4 +1,6 @@
 export default {
 	todos: [],
-	userInfo: null
+	uid: "",
+	todosFlag: true,
+	email: ""
 }

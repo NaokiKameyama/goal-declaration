@@ -9,18 +9,26 @@
       Top
   </el-menu-item>
 
-  <el-menu-item index="Signin" class="link-container" :route="{ path:'/Signin' }">
+  <el-menu-item v-if="!uid" index="Signin" class="link-container" :route="{ path:'/Signin' }">
     <i class="el-icon-check" />
       Signin
   </el-menu-item>
 
-  <el-menu-item index="Signup" class="link-container" :route="{ path:'/Signup' }">
+  <el-menu-item v-if="!uid" index="Signup" class="link-container" :route="{ path:'/Signup' }">
     <i class="el-icon-plus" />
     Signup
   </el-menu-item>
-  
-  <el-menu-item index="email" class="link-container" :route="{ path:'/Mypage' }">
-    <i class="el-icon-user" />
-    Mypage
+
+  <el-menu-item v-if="emailHead" index="GoalTweet" class="link-container" :route="{ path:'/GoalTweet' }">
+    <i class="el-icon-edit" />
+    Tweet Tasks
   </el-menu-item>
+
+  <el-menu-item v-if="emailHead" index="Mypage" class="link-container" :route="{ path:'/Mypage' }">
+    <i class="el-icon-user" />
+    {{ emailHead }}
+  </el-menu-item>
+
+
+
 </el-menu>
