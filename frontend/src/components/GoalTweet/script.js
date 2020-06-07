@@ -42,7 +42,7 @@ export default {
     }
   },
   mounted(){
-    this.todoList = this.todos
+    this.todoList = (!this.todosFlag)? this.myTodos : this.todos
   },
   watch: {
     allTodos: function (val) {
@@ -162,6 +162,10 @@ export default {
       }
     },
     showMyTodos(){
+      if(!this.uid){
+        this.$router.push('Signup')
+        return
+      }
       this.$store.dispatch('switchTodos', false);
       this.todoList = this.myTodos
     },
