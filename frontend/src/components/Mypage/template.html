@@ -6,7 +6,8 @@
   <div class="center-txt">
     達成済み
   </div>
-  <p v-for="(achive, index) in achived_myTodos" :key="achive.id" align="center"> {{achive.name}} <p/> 
+    <todo-cards :message=this.achived_myTodos />
+
   <div class="center-txt">
     いままでのつぶやき <i class="el-icon-edit" />
   </div>

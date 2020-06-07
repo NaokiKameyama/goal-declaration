@@ -1,4 +1,5 @@
 import moment from "moment"
+import TodoCards from "@/components/TodoCards/Index.vue";
 
 export default {
   name: 'HelloWorld',
@@ -37,5 +38,8 @@ export default {
         return 0
       }
     }
+  },
+  components: {
+    TodoCards
   }
 }
