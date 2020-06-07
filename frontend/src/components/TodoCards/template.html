@@ -29,10 +29,10 @@
               残り: unlimited 👿
             </div>
             <i v-if="uid == todo.uid || todo.uid == ''" class="el-icon-circle-close" @click="remove(todo.id)"></i>
-            <div v-if="uid == todo.uid" class="achivement">
+            <div v-if="uid == todo.uid && !todo.achiveFlag" class="achivement">
               <v-btn text small color="primary" @click="achive(todo.id)">達成</v-btn>
             </div>
-            <div v-if="uid == todo.uid" class="update">
+            <div v-if="uid == todo.uid && !todo.achiveFlag" class="update">
               <v-btn text small color="primary" @click="$emit('set', todo)">編集</v-btn>
             </div>
           </v-card-text>
