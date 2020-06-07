@@ -1,0 +1,362 @@
+.center-title {
+  margin: 50px auto 10px auto;
+  font-size: 50px;
+  text-align: center;
+  color: #606266;
+  font-weight: bold;
+}
+
+.middle-title {
+  margin: 0px auto 10px auto;
+  font-size: 50px;
+  text-align: center;
+  color: #577fd1;
+  font-weight: bold;
+}
+
+.input-container {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.center-button{
+  margin: 0 10px;
+}
+
+.time {
+  width: 100%;
+}
+
+.tweet-button {
+  display: block;
+  margin: 0 0 0 auto;
+}
+
+.goal-list-title {
+  margin: 50px auto 50px auto;
+  font-size: 30px;
+  color: #606266;
+  text-align: center;
+}
+
+.goal-list-table {
+  margin: 50px auto 50px auto;
+}
+
+.goal-list {
+  text-align: left;
+  font-size: 20px;
+}
+
+.remove {
+  width: 10px;
+  height: 8px;
+  font-size: 5px;
+  text-align: center;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 80%;
+}
+
+table tr {
+  border-bottom: solid 1px #eee;
+  cursor: pointer;
+}
+
+table tr:hover {
+  background-color: #f4fcff;
+}
+
+table th,
+table td {
+  text-align: center;
+  width: 25%;
+  padding: 15px 0;
+}
+
+table td.icon {
+  background-size: 35px;
+  background-position: left 5px center;
+  background-repeat: no-repeat;
+  padding-left: 30px;
+}
+
+.createDate {
+  width: 13%;
+}
+
+.limitedDate {
+  width: 13%;
+}
+
+.goal {
+  width: 50%;
+}
+
+.remaining-time {
+  width: 24%;
+}
+
+.createDate-list {
+  width: 13%;
+  font-size: 17px;
+  padding: 1%;
+}
+
+.limitedDate-list {
+  width: 13%;
+  font-size: 17px;
+  padding: 1%;
+}
+
+.goal-list {
+  width: 50%;
+  text-align: center;
+  padding: 1%;
+}
+
+.remaining-time-list {
+  width: 24%;
+  font-size: 10px;
+  padding: 1%;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: auto;
+  align-items: baseline;
+}
+
+.mx-auto {
+  margin: 10px;
+}
+
+.text-goal {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.unlimit {
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 10%;
+}
+
+.el-icon-circle-close {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+}
+
+.created-time {
+  font-size: 12px;
+}
+
+.remain{
+  margin-bottom:4%;
+}
+
+.achivement{
+  position: absolute;
+  bottom: 1px;
+  right : 1px;
+}
+
+.update{
+  position: absolute;
+  bottom: 1px;
+  right : 25%;
+}
+
+.search-container{
+  margin: 0 auto;
+  width: 50%
+}
+
+.search-button{
+  display: block;
+  margin: 0 0 0 auto;
+}
+
+input[type=checkbox],input[type=radio] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  position: relative;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  vertical-align: -0.8rem;
+  transition:all .15s ease-out 0s;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  margin: .4rem;
+  outline: none;
+  border-radius: 10%;
+}
+/* Checkbox */
+input[type=checkbox]:before,input[type=checkbox]:after {
+  position: absolute;
+  content: "";
+  background: #fff;
+  transition: all .2s ease-in-out;
+}
+input[type=checkbox]:before {
+  left: 2px;
+  top: 6px;
+  width: 0;
+  height: 2px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+}
+input[type=checkbox]:after {
+  right: 9px;
+  bottom: 3px;
+  width: 2px;
+  height: 0;
+  transform: rotate(40deg);
+  -webkit-transform: rotate(40deg);
+  -moz-transform: rotate(40deg);
+  -ms-transform: rotate(40deg);
+  -o-transform: rotate(40deg);
+  transition-delay: .2s;
+}
+input[type=checkbox]:checked:before {
+  left: 1px;
+  top: 10px;
+  width: 6px;
+  height: 2px;
+}
+input[type=checkbox]:checked:after {
+  right: 5px;
+  bottom: 1px;
+  width: 2px;
+  height: 14px;
+}
+input[type=checkbox]:indeterminate:before,input[type=checkbox]:indeterminate:after {
+  width: 7px;
+  height: 2px;
+  transform: rotate(0);
+  -webkit-transform: rotate(0);
+  -moz-transform: rotate(0);
+  -ms-transform: rotate(0);
+  -o-transform: rotate(0);
+}
+input[type=checkbox]:indeterminate:before {
+  left: 1px;
+  top: 7px;
+}
+input[type=checkbox]:indeterminate:after {
+  right: 1px;
+  bottom: 7px;
+}
+/* Radio */
+input[type=radio] {
+  border-radius: 50%;
+}
+input[type=radio]:checked:before {
+  transform: scale(1);
+}
+input[type=radio]:before {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: 3px;
+  transform: scale(0);
+  transition: all ease-out 250ms;
+}
+/* white */
+input[type=checkbox].white,input[type=radio].white {
+  border: 2px solid #e2e2e2;
+}
+input[type=checkbox].white:checked,input[type=checkbox].white:indeterminate,input[type=radio].white:checked:before {
+  background: #e2e2e2;
+}
+
+/* light-blue */
+input[type=checkbox].light-blue,input[type=radio].light-blue {
+  border: 2px solid #B2EBF2;
+}
+input[type=checkbox].light-blue:checked,input[type=checkbox].light-blue:indeterminate,input[type=radio].light-blue:checked:before {
+  background: #B2EBF2;
+}
+
+/* blue */
+input[type=checkbox].blue,input[type=radio].blue {
+  border: 2px solid #B3E5FC;
+}
+input[type=checkbox].blue:checked,input[type=checkbox].blue:indeterminate,input[type=radio].blue:checked:before {
+  background: #B3E5FC;
+}
+
+@media screen and (max-width: 601px) {
+  .center-title {
+    margin: 50px auto 10px auto;
+    font-size: 25px;
+    text-align: center;
+    color: #606266;
+    font-weight: bold;
+  }
+  .input-container {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .time {
+    width: 100%;
+  }
+  .tweet-button {
+    display: block;
+    margin: 0 0 0 auto;
+  }
+
+  .card-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: auto;
+    align-items: baseline;
+  }
+  .mx-auto {
+    margin: 2px;
+  }
+  .vuejs-countdown .digit {
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 0;
+  }
+  .created-time {
+    font-size: 10px;
+  }
+
+  .remain {
+    font-size: 12px;
+  }
+
+}
