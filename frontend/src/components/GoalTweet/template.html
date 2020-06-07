@@ -7,10 +7,12 @@
     <ul>
       <el-input placeholder="目標を入力" v-model="name"></el-input>
       <el-date-picker v-model="deadline" type="datetime" class="time" placeholder="期日を選択してください"></el-date-picker>
+      重要度
       <label><input class="white" type="radio" value="1" v-model="priority" checked="checked"> 普通&nbsp;</label>
       <label><input class="light-blue" type="radio" value="2" v-model="priority"> 重要&nbsp;</label>
       <label><input class="blue" type="radio" value="3" v-model="priority"> 最重要&nbsp;</label>
       <p></p>
+      緊急度
       <label><input class="white" type="radio" value="1" v-model="urgent" checked="checked"> 普通&nbsp;</label>
       <label><input class="light-blue" type="radio" value="2" v-model="urgent"> 緊急&nbsp;</label>
       <label><input class="blue" type="radio" value="3" v-model="urgent"> 超緊急&nbsp;</label>
@@ -79,4 +81,6 @@
       <el-button type="primary">Top</el-button>
     </router-link>
   </div>
+  <el-radio v-model="radio" label="1"></el-radio>
+  <el-radio v-model="radio" label="2"></el-radio>
 </div>
