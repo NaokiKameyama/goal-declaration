@@ -1,12 +1,16 @@
 import "firebase/firestore";
+import moment from "moment"
+import VueCountdown from '@chenfengyuan/vue-countdown';
+import draggable from 'vuedraggable'
 import _ from 'lodash'
-import Header from "@/components/Header/Index.vue";
-import TodoCards from "@/components/TodoCards/Index.vue";
 
 export default {
   name: "todoAdd",
   data: function() {
     return {
+      options: {
+        animation: 300
+      },
       name: "",
       word: "",
       deadline: '',
@@ -134,7 +138,12 @@ export default {
         duration: 2000
       });
     },
-    // TODO: inputDataメソッドはモーダルコンポーネント側で実装する
+    remove(id) {
+      this.$store.dispatch('remove', id);
+    },
+    achive(id) {
+      this.$store.dispatch('achive', id)
+    },
     inputData(todo) {
       this.id = todo.id
       this.name = todo.name,
@@ -142,6 +151,15 @@ export default {
       this.deadline = todo.deadline.toDate(),
       this.priority = todo.priority,
       this.addTodoFlag = false
+    },
+    diffTimeDeadlineToNow(date) {
+      try {
+        var convertDate = date.toDate()
+        if (Number(convertDate - new Date()) < 0) return 0
+        return Number(convertDate - new Date())
+      } catch( e ) {
+        return 0
+      }
     },
     sortDeadline(){
       this.sortDeadlineFlag = true
@@ -171,10 +189,28 @@ export default {
     },
     getTodosBySearch(word){
       this.todoList = this.$store.getters.getTodosBySearch({word:word, todos: (!this.todosFlag)? this.myTodos : this.todos})
+    },
+    console(todo) { 
+      console.log(todo.id)
+    }
+  },
+  filters: {
+    unixTime2Date: function(date) {
+      try {
+        var convertDate  = date.toDate()
+        return moment(convertDate).format('YYYY/MM/DD HH:mm:ss')
+      } catch( e ) {
+        return 0
+      }
+    },
+    priority2Color: function(priority) {
+      if(priority == "1") return ""
+      if(priority == "2") return "#B2EBF2"
+      if(priority == "3") return "#B3E5FC"
     }
   },
   components: {
-    Header,
-    TodoCards
+    countdown: VueCountdown,
+    draggable
   }
 };

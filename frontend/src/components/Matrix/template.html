@@ -12,16 +12,195 @@
   </thead>
   <tbody>
     <tr>
-      <th class="total-income" rowspan="3">緊急度
-      </th>
+      <th class="total-income" rowspan="2">緊急度</th>
       <th class="income">普通</th>
-      <td><todo-cards class="test" :message=this.todoList /></td>
-      <td><todo-cards class="test" :message=this.todoList /></td>
+      <td>
+        <div class="center">　
+          <draggable :options="options" class="card-container">
+            <div v-for="todo in this.todoList" :key="todo.id">
+              <v-card class="mx-auto" @click="console(todo)" max-width="350" min-width="150"
+                :color="todo.priority | priority2Color" hover>
+                <v-card-text>
+                  <div v-if="todo.created" class="created-time">
+                    {{ todo.created | unixTime2Date }}
+                  </div>
+                  <div v-if="todo.deadline && todo.created" class="created-time">
+                    {{ todo.deadline | unixTime2Date }}
+                  </div>
+                  <div v-if="!todo.deadline && todo.created" class="created-time">
+                    Deadline： なし
+                  </div>
+                  <div class="text-goal">
+                    {{ todo.name }}
+                  </div>
+                  <div v-if="todo.deadline  && todo.created">
+                    <countdown :time="diffTimeDeadlineToNow(todo.deadline)">
+                      <!-- <countdown :time="120000"> -->
+                      <template slot-scope="props">
+                        <div class="remain">
+                          {{ props.days }}日 {{ props.hours }}時間 {{ props.minutes }}分 {{ props.seconds }}秒
+                        </div>
+                      </template>
+                    </countdown>
+                  </div>
+                  <div v-if="!todo.deadline && todo.created">
+                    残り: unlimited 👿
+                  </div>
+                  <i v-if="uid == todo.uid || todo.uid == ''" class="el-icon-circle-close" @click="remove(todo.id)"></i>
+                  <div v-if="uid == todo.uid" class="achivement">
+                    <v-btn text small color="primary" @click="achive(todo.id)">達成</v-btn>
+                  </div>
+                  <div v-if="uid == todo.uid" class="update">
+                    <v-btn text small color="primary" @click="inputData(todo)">編集</v-btn>
+
+                  </div>
+                </v-card-text>
+              </v-card>
+            </div>
+          </draggable>
+        </div>
+      </td>
+      <td>
+        <div class="center">　
+          <draggable :options="options" class="card-container">
+            <div v-for="todo in this.todoList" :key="todo.id">
+              <v-card class="mx-auto" @click="console(todo)" max-width="350" min-width="150"
+                :color="todo.priority | priority2Color" hover>
+                <v-card-text>
+                  <div v-if="todo.created" class="created-time">
+                    {{ todo.created | unixTime2Date }}
+                  </div>
+                  <div v-if="todo.deadline && todo.created" class="created-time">
+                    {{ todo.deadline | unixTime2Date }}
+                  </div>
+                  <div v-if="!todo.deadline && todo.created" class="created-time">
+                    Deadline： なし
+                  </div>
+                  <div class="text-goal">
+                    {{ todo.name }}
+                  </div>
+                  <div v-if="todo.deadline  && todo.created">
+                    <countdown :time="diffTimeDeadlineToNow(todo.deadline)">
+                      <!-- <countdown :time="120000"> -->
+                      <template slot-scope="props">
+                        <div class="remain">
+                          {{ props.days }}日 {{ props.hours }}時間 {{ props.minutes }}分 {{ props.seconds }}秒
+                        </div>
+                      </template>
+                    </countdown>
+                  </div>
+                  <div v-if="!todo.deadline && todo.created">
+                    残り: unlimited 👿
+                  </div>
+                  <i v-if="uid == todo.uid || todo.uid == ''" class="el-icon-circle-close" @click="remove(todo.id)"></i>
+                  <div v-if="uid == todo.uid" class="achivement">
+                    <v-btn text small color="primary" @click="achive(todo.id)">達成</v-btn>
+                  </div>
+                  <div v-if="uid == todo.uid" class="update">
+                    <v-btn text small color="primary" @click="inputData(todo)">編集</v-btn>
+
+                  </div>
+                </v-card-text>
+              </v-card>
+            </div>
+          </draggable>
+        </div>
+      </td>
     </tr>
     <tr>
       <th class="income">緊急</th>
-      <td><todo-cards class="test" :message=this.todoList /></td>
-      <td><todo-cards class="test" :message=this.todoList /></td>
+      <td>
+        <div class="center">　
+          <draggable :options="options" class="card-container">
+            <div v-for="todo in this.todoList" :key="todo.id">
+              <v-card class="mx-auto" @click="console(todo)" max-width="350" min-width="150"
+                :color="todo.priority | priority2Color" hover>
+                <v-card-text>
+                  <div v-if="todo.created" class="created-time">
+                    {{ todo.created | unixTime2Date }}
+                  </div>
+                  <div v-if="todo.deadline && todo.created" class="created-time">
+                    {{ todo.deadline | unixTime2Date }}
+                  </div>
+                  <div v-if="!todo.deadline && todo.created" class="created-time">
+                    Deadline： なし
+                  </div>
+                  <div class="text-goal">
+                    {{ todo.name }}
+                  </div>
+                  <div v-if="todo.deadline  && todo.created">
+                    <countdown :time="diffTimeDeadlineToNow(todo.deadline)">
+                      <!-- <countdown :time="120000"> -->
+                      <template slot-scope="props">
+                        <div class="remain">
+                          {{ props.days }}日 {{ props.hours }}時間 {{ props.minutes }}分 {{ props.seconds }}秒
+                        </div>
+                      </template>
+                    </countdown>
+                  </div>
+                  <div v-if="!todo.deadline && todo.created">
+                    残り: unlimited 👿
+                  </div>
+                  <i v-if="uid == todo.uid || todo.uid == ''" class="el-icon-circle-close" @click="remove(todo.id)"></i>
+                  <div v-if="uid == todo.uid" class="achivement">
+                    <v-btn text small color="primary" @click="achive(todo.id)">達成</v-btn>
+                  </div>
+                  <div v-if="uid == todo.uid" class="update">
+                    <v-btn text small color="primary" @click="inputData(todo)">編集</v-btn>
+
+                  </div>
+                </v-card-text>
+              </v-card>
+            </div>
+          </draggable>
+        </div>
+      </td>
+      <td>
+        <div class="center">　
+          <draggable :options="options" class="card-container">
+            <div v-for="todo in this.todoList" :key="todo.id">
+              <v-card class="mx-auto" @click="console(todo)" max-width="350" min-width="50"
+                :color="todo.priority | priority2Color" hover>
+                <v-card-text>
+                  <div v-if="todo.created" class="created-time">
+                    {{ todo.created | unixTime2Date }}
+                  </div>
+                  <div v-if="todo.deadline && todo.created" class="created-time">
+                    {{ todo.deadline | unixTime2Date }}
+                  </div>
+                  <div v-if="!todo.deadline && todo.created" class="created-time">
+                    Deadline： なし
+                  </div>
+                  <div class="text-goal">
+                    {{ todo.name }}
+                  </div>
+                  <div v-if="todo.deadline  && todo.created">
+                    <countdown :time="diffTimeDeadlineToNow(todo.deadline)">
+                      <!-- <countdown :time="120000"> -->
+                      <template slot-scope="props">
+                        <div class="remain">
+                          {{ props.days }}日 {{ props.hours }}時間 {{ props.minutes }}分 {{ props.seconds }}秒
+                        </div>
+                      </template>
+                    </countdown>
+                  </div>
+                  <div v-if="!todo.deadline && todo.created">
+                    unlimited 👿
+                  </div>
+                  <i v-if="uid == todo.uid || todo.uid == ''" class="el-icon-circle-close" @click="remove(todo.id)"></i>
+                  <div v-if="uid == todo.uid" class="achivement">
+                    <v-btn text small color="primary" @click="achive(todo.id)">達成</v-btn>
+                  </div>
+                  <div v-if="uid == todo.uid" class="update">
+                    <v-btn text small color="primary" @click="inputData(todo)">編集</v-btn>
+
+                  </div>
+                </v-card-text>
+              </v-card>
+            </div>
+          </draggable>
+        </div>
+      </td>
     </tr>
   </tbody>
 </table>
