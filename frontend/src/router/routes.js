@@ -27,7 +27,7 @@ export default [
 		component: Mypage
 	},
 	{
-		path: '/matrix',
+		path: '/Matrix',
 		component: Matrix
 	}
 ]

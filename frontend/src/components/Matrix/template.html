@@ -1,27 +1,13 @@
-<!-- マトリクス図 -->
-<table class="matrix" border="2">
-  <thead>
-    <tr>
-      <th colspan="2" rowspan="2"></th>
-      <th class="repayment-ratio" colspan="5">重要度</th>
-    </tr>
-    <tr>
-      <th class="percent">普通</th>
-      <th class="percent">重要</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th class="total-income" rowspan="3">緊急度
-      </th>
-      <th class="income">普通</th>
-      <td><todo-cards class="test" :message=this.todoList /></td>
-      <td><todo-cards class="test" :message=this.todoList /></td>
-    </tr>
-    <tr>
-      <th class="income">緊急</th>
-      <td><todo-cards class="test" :message=this.todoList /></td>
-      <td><todo-cards class="test" :message=this.todoList /></td>
-    </tr>
-  </tbody>
-</table>
+<div>
+  <div class="center-title">
+    Matrix
+    <i class="el-icon-news"></i>
+  </div>
+
+  <todo-cards :message=this.todoList @set="inputData"/>
+  <div class="center-title">
+    <router-link to="/">
+      <el-button type="primary">Top</el-button>
+    </router-link>
+  </div>
+</div>
