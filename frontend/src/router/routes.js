@@ -5,8 +5,7 @@ import Signin from "@/components/Signin/Index.vue"
 import Mypage from "@/components/Mypage/Index.vue"
 import Matrix from "@/components/Matrix/Index.vue"
 
-export default [
-	{
+export default [{
 		path: '/',
 		component: Top
 	},
@@ -27,7 +26,7 @@ export default [
 		component: Mypage
 	},
 	{
-		path: '/matrix',
+		path: '/Matrix',
 		component: Matrix
 	}
 ]

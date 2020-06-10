@@ -6,7 +6,7 @@ import _ from 'lodash'
 
 export default {
   name: "todoAdd",
-  data: function() {
+  data: function () {
     return {
       options: {
         animation: 300
@@ -29,28 +29,32 @@ export default {
     todos() {
       return this.$store.getters.getTodos
     },
-    myTodos () {
+    myTodos() {
       return this.$store.getters.getMyTodos
     },
-    myTodos_with_achive () {
+    myTodos_with_achive() {
       return this.$store.getters.getMyTodos_with_achive
     },
-    allTodos(){
-      return {todos: this.$store.getters.getTodos, myTodos: this.$store.getters.getMyTodos}
+    allTodos() {
+      return {
+        todos: this.$store.getters.getTodos,
+        myTodos: this.$store.getters.getMyTodos
+      }
     },
-    todosFlag(){
+    todosFlag() {
       return this.$store.getters.getTodosFlag
     },
     uid() {
       return this.$store.getters.getUid
-    }
+    },
+
   },
-  mounted(){
+  mounted() {
     this.todoList = this.todos
   },
   watch: {
     allTodos: function (val) {
-        this.todoList = (!this.todosFlag)? val.myTodos : val.todos
+      this.todoList = (!this.todosFlag) ? val.myTodos : val.todos
     }
   },
   methods: {
@@ -91,11 +95,11 @@ export default {
     inputError(text) {
       this.$notify.error({
         title: "Error",
-        message: text+"が入力されていません。",
+        message: text + "が入力されていません。",
         duration: 2000
       });
     },
-    upDate(){
+    upDate() {
       if (!this.name && !this.deadline) {
         this.updateError("目標と期日");
         return;
@@ -110,17 +114,17 @@ export default {
       }
       this.updateSuccess();
       this.addTodoFlag = true;
-      this.$store.dispatch('upDate',{
-        id : this.id,
-        name: this.name,
-        uid: this.uid,
-        deadline: this.deadline,
-        priority: this.priority,
-        urgent: this.urgent,
-        deleteFlag: this.deleteFlag,
-        achiveFlag: this.achiveFlag,
-      }),
-      this.name = ""
+      this.$store.dispatch('upDate', {
+          id: this.id,
+          name: this.name,
+          uid: this.uid,
+          deadline: this.deadline,
+          priority: this.priority,
+          urgent: this.urgent,
+          deleteFlag: this.deleteFlag,
+          achiveFlag: this.achiveFlag,
+        }),
+        this.name = ""
       this.deadline = ""
     },
     updateSuccess() {
@@ -134,7 +138,7 @@ export default {
     updateError(text) {
       this.$notify.error({
         title: "Error",
-        message: text+"が入力されていません。",
+        message: text + "が入力されていません。",
         duration: 2000
       });
     },
@@ -147,66 +151,69 @@ export default {
     inputData(todo) {
       this.id = todo.id
       this.name = todo.name,
-      // this.deadline = moment(todo.deadline.toDate()).format('YYYY/MM/DD HH:mm:ss'),
-      this.deadline = todo.deadline.toDate(),
-      this.priority = todo.priority,
-      this.addTodoFlag = false
+        // this.deadline = moment(todo.deadline.toDate()).format('YYYY/MM/DD HH:mm:ss'),
+        this.deadline = todo.deadline.toDate(),
+        this.priority = todo.priority,
+        this.addTodoFlag = false
     },
     diffTimeDeadlineToNow(date) {
       try {
         var convertDate = date.toDate()
         if (Number(convertDate - new Date()) < 0) return 0
         return Number(convertDate - new Date())
-      } catch( e ) {
+      } catch (e) {
         return 0
       }
     },
-    sortDeadline(){
+    sortDeadline() {
       this.sortDeadlineFlag = true
-      if(!this.todosFlag){
+      if (!this.todosFlag) {
         this.todoList = _.sortBy(this.myTodos, 'deadline');
-      }else{
+      } else {
         this.$store.dispatch('init', 'deadline');
         this.todoList = this.todos
       }
     },
-    sortCreated(){
+    sortCreated() {
       this.sortDeadlineFlag = false
-      if(!this.todosFlag){
+      if (!this.todosFlag) {
         this.todoList = _.sortBy(this.myTodos, 'created');
-      }else{
+      } else {
         this.$store.dispatch('init', 'created');
         this.todoList = this.todos
       }
     },
-    showMyTodos(){
+    showMyTodos() {
       this.$store.dispatch('switchTodos', false);
       this.todoList = this.myTodos
     },
-    showTodos(){
+    showTodos() {
       this.$store.dispatch('switchTodos', true)
       this.todoList = this.todos
     },
-    getTodosBySearch(word){
-      this.todoList = this.$store.getters.getTodosBySearch({word:word, todos: (!this.todosFlag)? this.myTodos : this.todos})
+    getTodosBySearch(word) {
+      this.todoList = this.$store.getters.getTodosBySearch({
+        word: word,
+        todos: (!this.todosFlag) ? this.myTodos : this.todos
+      })
     },
-    console(todo) { 
+    console(todo) {
       console.log(todo.id)
     }
   },
   filters: {
-    unixTime2Date: function(date) {
+    unixTime2Date: function (date) {
       try {
-        var convertDate  = date.toDate()
+        var convertDate = date.toDate()
         return moment(convertDate).format('YYYY/MM/DD HH:mm:ss')
-      } catch( e ) {
+      } catch (e) {
         return 0
       }
     },
-    priority2Color: function(priority) {
-      if(priority == "1") return ""
-      if(priority == "2") return "#B2EBF2"
-      if(priority == "3") return "#B3E5FC"
+    priority2Color: function (priority) {
+      if (priority == "1") return ""
+      if (priority == "2") return "#B2EBF2"
+      if (priority == "3") return "#B3E5FC"
     }
   },
   components: {
