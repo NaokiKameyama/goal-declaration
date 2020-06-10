@@ -23,4 +23,4 @@ open http://localhost:8080
 - npm
 
 ## Authors
-- Naoki Kameyama
+- Naoki-Kameyama
