@@ -1,9 +1,12 @@
 <div class="signin">
   <h2>Sign in</h2>
-  <input type="text" placeholder="Username" v-model="username">
-  <input type="password" placeholder="Password" v-model="password">
-  <button @click="signIn">Signin</button>
+  <el-input class="center" type="text" placeholder="Username" v-model="username"></el-input>
+  <el-input class="center" type="password" placeholder="Password" v-model="password"></el-input>
+  <el-button type="primary" @click="signIn">Signin</el-button>
   <p>You don't have an account? 
     <router-link to="/signup">create account now!!</router-link>
   </p>
+  <p style="margin-top : 40px; font-size: 30px;"> ※テスト用 ↓</p>
+  <el-button class="margin" type="warning" @click="signIn_a">a@a.comユーザでサインイン</el-button>
+  <el-button class="margin" type="warning" @click="signIn_b">b@b.comユーザでサインイン</el-button>
 </div>
