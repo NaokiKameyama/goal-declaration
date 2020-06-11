@@ -29,7 +29,7 @@
     {{ emailHead }}
   </el-menu-item>
 
-    <el-menu-item index="matrix" class="link-container" :route="{ path:'/Matrix' }">
+    <el-menu-item v-if="uid" index="matrix" class="link-container" :route="{ path:'/Matrix' }">
     <i class="el-icon-news" />
       Matrix
   </el-menu-item>

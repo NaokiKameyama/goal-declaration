@@ -1,9 +1,12 @@
 <div class="signin">
   <h2>Sign in</h2>
-  <input type="text" placeholder="Username" v-model="username">
-  <input type="password" placeholder="Password" v-model="password">
+  <input class="" type="text" placeholder="Username" v-model="username">
+  <input class="" type="password" placeholder="Password" v-model="password">
   <button @click="signIn">Signin</button>
   <p>You don't have an account? 
     <router-link to="/signup">create account now!!</router-link>
   </p>
+  <p>※テスト用 ↓</p>
+  <button @click="signIn_a">　a@a.comユーザでサインイン</button>
+  <button @click="signIn_a">　b@b.comユーザでサインイン</button>
 </div>

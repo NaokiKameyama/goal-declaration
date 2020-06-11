@@ -46,16 +46,7 @@ export default {
     },
     uid() {
       return this.$store.getters.getUid
-    },
-    todoPriority() {
-      const data = this.todoList;
-      const result = data.filter(x => x.priority === "1");
-      return result;
-      // return data.filter(x => x.priority === "1")
     }
-    //achived_myTodos() {
-    //  return this.$store.getters.getMyTodos_with_achive.filter(x => x.achiveFlag)
-    //}
 
   },
   mounted() {

@@ -11,6 +11,11 @@ td {
   height: 100%;
 }
 
+td :hover {
+  background-color: #f4fcff;
+}
+
+
 .test {
   height: 300px;
   overflow: scroll;
@@ -91,9 +96,9 @@ table tr {
   cursor: pointer;
 }
 
-table tr:hover {
+/* table tr:hover {
   background-color: #f4fcff;
-}
+} */
 
 table th,
 table td {
@@ -113,15 +118,6 @@ table td.icon {
 .matrix {
   width: 100vw;
   height: 100vh;
-}
-
-.income {
-  width: 10px
-}
-
-.total-income {
-  width: 10px;
-  padding: 0;
 }
 
 .createDate {

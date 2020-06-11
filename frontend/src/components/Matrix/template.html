@@ -3,21 +3,21 @@
   <thead>
     <tr>
       <th colspan="2" rowspan="2"></th>
-      <th class="repayment-ratio" colspan="5">重要度</th>
+      <th class="priority-title" colspan="5">重要度</th>
     </tr>
     <tr>
-      <th class="percent">普通</th>
-      <th class="percent">重要</th>
+      <th class="priority-todo">普通</th>
+      <th class="priority-todo">重要</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th class="total-income" rowspan="2">緊急度</th>
-      <th class="income">普通</th>
+      <th class="urgent-title" rowspan="2">緊急度</th>
+      <th class="urgent-todo">普通</th>
       <td>
         <div class="center">　
           <draggable :options="options" class="card-container">
-            <div v-for="todo in todoPriority" :key=" todo.id">
+            <div v-for="todo in this.$store.getters.getTodos_p1_u1" :key=" todo.id">
               <v-card class="mx-auto" @click="console(todo)" max-width="350" min-width="150"
                 :color="todo.priority | priority2Color" hover>
                 <v-card-text>
@@ -63,7 +63,7 @@
       <td>
         <div class="center">　
           <draggable :options="options" class="card-container">
-            <div v-for="todo in this.todoList" :key="todo.id">
+            <div v-for="todo in this.$store.getters.getTodos_p2_u1" :key="todo.id">
               <v-card class="mx-auto" @click="console(todo)" max-width="350" min-width="150"
                 :color="todo.priority | priority2Color" hover>
                 <v-card-text>
@@ -108,11 +108,11 @@
       </td>
     </tr>
     <tr>
-      <th class="income">緊急</th>
+      <th class="urgent-todo">緊急</th>
       <td>
         <div class="center">　
           <draggable :options="options" class="card-container">
-            <div v-for="todo in this.todoList" :key="todo.id">
+            <div v-for="todo in this.$store.getters.getTodos_p1_u2" :key="todo.id">
               <v-card class="mx-auto" @click="console(todo)" max-width="350" min-width="150"
                 :color="todo.priority | priority2Color" hover>
                 <v-card-text>
@@ -158,7 +158,7 @@
       <td>
         <div class="center">　
           <draggable :options="options" class="card-container">
-            <div v-for="todo in this.todoList" :key="todo.id">
+            <div v-for="todo in this.$store.getters.getTodos_p2_u2" :key="todo.id">
               <v-card class="mx-auto" @click="console(todo)" max-width="350" min-width="50"
                 :color="todo.priority | priority2Color" hover>
                 <v-card-text>
