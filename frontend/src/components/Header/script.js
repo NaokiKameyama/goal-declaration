@@ -1,7 +1,13 @@
 export default {
   data: function () {
-    return {
-    };
+    return {};
+  },
+  methods: {
+    signOut: function () {
+      this.$store.dispatch('signOut');
+      this.$router.push('/');
+      console.log("toridayo")
+    }
   },
   computed: {
     uid() {

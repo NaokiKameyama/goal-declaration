@@ -1,8 +1,8 @@
 <div class="signup">
   <h2>Sign up</h2>
-  <input type="text" placeholder="Username" v-model="username">
-  <input type="password" placeholder="Password" v-model="password">
-  <button @click="signUp">Register</button>
+  <el-input class="center" type="text" placeholder="Username" v-model="username"></el-input>
+  <el-input class="center" type="password" placeholder="Password" v-model="password"></el-input>
+  <el-button type="danger" @click="signUp">Register</el-button>
   <p>Do you have an account? 
     <router-link to="/signin">sign in now!!</router-link>
   </p>
