@@ -5,7 +5,7 @@ export default {
   methods: {
     signOut: function () {
       this.$store.dispatch('signOut');
-      this.$router.push('/');
+      this.$router.push('/Signin');
       console.log("toridayo")
     }
   },
