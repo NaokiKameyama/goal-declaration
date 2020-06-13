@@ -37,7 +37,6 @@ export default {
     },
     allTodos() {
       return {
-        todos: this.$store.getters.getTodos,
         myTodos: this.$store.getters.getMyTodos
       }
     },
@@ -54,7 +53,7 @@ export default {
   },
   watch: {
     allTodos: function (val) {
-      this.todoList = (!this.todosFlag) ? val.myTodos : val.todos
+      this.todoList = val.myTodos
     }
   },
   methods: {

@@ -1,11 +1,10 @@
 import firebase from 'firebase'
 
 export default {
-  name: 'HelloWorld',
   computed: {
-    todos() {
-      return this.$store.state.todos
-    }
+    uid() {
+      return this.$store.getters.getUid
+    },
   },
   methods: {
     signOut: function () {
