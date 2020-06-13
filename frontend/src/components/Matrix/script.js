@@ -169,7 +169,10 @@ export default {
       if (!this.todosFlag) {
         this.todoList = _.sortBy(this.myTodos, 'deadline');
       } else {
-        this.$store.dispatch('init', 'deadline');
+        this.$store.dispatch('start', {
+          sortKey: "deadline",
+          uid: this.uid,
+        })
         this.todoList = this.todos
       }
     },
@@ -178,7 +181,10 @@ export default {
       if (!this.todosFlag) {
         this.todoList = _.sortBy(this.myTodos, 'created');
       } else {
-        this.$store.dispatch('init', 'created');
+        this.$store.dispatch('start', {
+          sortKey: "created",
+          uid: this.uid,
+        })
         this.todoList = this.todos
       }
     },

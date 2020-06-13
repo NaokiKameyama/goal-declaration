@@ -4,10 +4,10 @@ import firebase from "firebase";
 
 export default {
   // firestoreの初期化
-  init(context, sortKey) {
+  start(context, startob) {
     this.db = firebase.firestore();
     // DBに接続 (コネクションは張りっぱなし？)
-    this.db.collection("todos").onSnapshot(function (querySnapshot) {
+    this.db.collection("todos").where("uid", "==", startob.uid).onSnapshot(function (querySnapshot) {
       var todos = [];
       querySnapshot.forEach(function (doc) {
         var data = doc.data();
@@ -16,8 +16,9 @@ export default {
         todos.push(data);
       });
       // リストをcoud firestoerのcreatedをkeyにして昇順にソート
-      todos = _.sortBy(todos, sortKey);
+      todos = _.sortBy(todos, startob.sortKey);
       context.commit('todos', todos)
+      console.log(todos)
     });
   },
   // firestoreにデータを追加
