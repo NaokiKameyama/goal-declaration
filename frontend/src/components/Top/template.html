@@ -1,5 +1,10 @@
 <div class="container">
-  <router-link to="/GoalTweet" class="test">
+  <router-link v-if="!uid" to="/Signin" class="test">
+    <div class="example-button">
+      タスクをつぶやく<i class="el-icon-ice-cream-round" />
+    </div>
+  </router-link>
+    <router-link v-else to="/GoalTweet" class="test">
     <div class="example-button">
       タスクをつぶやく<i class="el-icon-ice-cream-round" />
     </div>
